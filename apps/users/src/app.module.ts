@@ -14,6 +14,10 @@ import { UploaderModule } from 'app/uploader';
 import { UploaderConfig } from './config/uploader.config';
 import { GraphQLFederationDriver } from 'app/common/drivers';
 import { APP_GUARD } from '@nestjs/core';
+import { InstitutionsModule } from './institutions/institutions.module';
+import { AddressesModule } from './addresses/addresses.module';
+import { ProfilesModule } from './profiles/profiles.module';
+import { SubscriptionsModule } from './subscriptions/subscriptions.module';
 
 @Module({
   imports: [
@@ -38,6 +42,10 @@ import { APP_GUARD } from '@nestjs/core';
     UsersModule,
     CommonModule,
     LoadersModule,
+    InstitutionsModule,
+    AddressesModule,
+    ProfilesModule,
+    SubscriptionsModule,
   ],
   providers: [
     {

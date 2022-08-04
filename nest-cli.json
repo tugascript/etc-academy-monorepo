@@ -53,6 +53,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/uploader/tsconfig.lib.json"
       }
+    },
+    "classes": {
+      "type": "application",
+      "root": "apps/courses",
+      "entryFile": "main",
+      "sourceRoot": "apps/courses/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/courses/tsconfig.app.json"
+      }
     }
   }
 }

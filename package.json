@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@apollo/subgraph": "^2.0.5",
-    "@aws-sdk/client-s3": "^3.137.0",
+    "@aws-sdk/client-s3": "^3.142.0",
     "@aws-sdk/signature-v4-crt": "^3.130.0",
     "@fastify/cookie": "^7.3.1",
     "@fastify/cors": "^8.0.0",
@@ -32,13 +32,13 @@
     "@mikro-orm/core": "^5.3.0",
     "@mikro-orm/nestjs": "^5.1.0",
     "@mikro-orm/postgresql": "^5.3.0",
-    "@nestjs/common": "^9.0.7",
+    "@nestjs/common": "^9.0.8",
     "@nestjs/config": "^2.2.0",
-    "@nestjs/core": "^9.0.7",
+    "@nestjs/core": "^9.0.8",
     "@nestjs/graphql": "^10.0.21",
     "@nestjs/mercurius": "^10.0.21",
-    "@nestjs/microservices": "^9.0.7",
-    "@nestjs/platform-fastify": "^9.0.7",
+    "@nestjs/microservices": "^9.0.8",
+    "@nestjs/platform-fastify": "^9.0.8",
     "@nestjs/throttler": "^3.0.0",
     "add": "^2.0.6",
     "altair-fastify-plugin": "^4.5.3",
@@ -72,7 +72,7 @@
     "@mikro-orm/sqlite": "^5.3.0",
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.1",
-    "@nestjs/testing": "^9.0.7",
+    "@nestjs/testing": "^9.0.8",
     "@types/bcrypt": "^5.0.0",
     "@types/cache-manager": "^4.0.1",
     "@types/graphql-upload": "^8.0.11",
@@ -83,8 +83,8 @@
     "@types/sharp": "^0.30.4",
     "@types/supertest": "^2.0.12",
     "@types/uuid": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
-    "@typescript-eslint/parser": "^5.31.0",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -129,8 +129,8 @@
   "mikro-orm": {
     "useTsNode": true,
     "configPaths": [
-      "./src/mikro-orm.config.ts",
-      "./dist/mikro-orm.config.js"
+      "./apps/**/src/mikro-orm.config.ts",
+      "./apps/**/dist/mikro-orm.config.js"
     ]
   },
   "packageManager": "yarn@3.2.0"

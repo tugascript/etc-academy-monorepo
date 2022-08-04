@@ -48,12 +48,12 @@ export class UserEntity extends LocalBaseEntity implements IUser {
   public username!: string;
 
   @Field(() => String)
-  @Property({ columnType: 'varchar(255)', unique: true })
+  @Property({ columnType: 'varchar(250)', unique: true })
   @IsEmail()
   public email!: string;
 
   @Field(() => String, { nullable: true })
-  @Property({ columnType: 'varchar(255)', nullable: true })
+  @Property({ columnType: 'varchar(250)', nullable: true })
   @IsOptional()
   @IsUrl()
   public picture?: string;

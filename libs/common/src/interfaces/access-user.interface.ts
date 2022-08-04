@@ -1,8 +1,8 @@
-import { UserRoleEnum } from '../enums/user-role.enum';
+import { ProfileRoleEnum } from '../enums/profile-role.enum';
 
 export interface IAccessUser {
   id: number;
-  role: UserRoleEnum;
+  role: ProfileRoleEnum;
 }
 
 export interface IAccessPayloadResponse extends IAccessUser {

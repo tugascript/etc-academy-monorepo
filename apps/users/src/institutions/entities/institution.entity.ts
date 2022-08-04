@@ -3,17 +3,26 @@ import { Field, ObjectType } from '@nestjs/graphql';
 import {
   Collection,
   Entity,
+  Enum,
   ManyToOne,
   OneToMany,
   Property,
   Unique,
 } from '@mikro-orm/core';
 import { IInstitution } from '../interfaces/institution.interface';
-import { IsOptional, IsString, IsUrl, Length, Matches } from 'class-validator';
+import {
+  IsEnum,
+  IsOptional,
+  IsString,
+  IsUrl,
+  Length,
+  Matches,
+} from 'class-validator';
 import { NAME_REGEX, SLUG_REGEX } from 'app/common/constants';
 import { AddressEntity } from '../../addresses/entities/address.entity';
 import { ProfileEntity } from '../../profiles/entities/profile.entity';
 import { UserEntity } from '../../users/entities/user.entity';
+import { InstitutionTypeEnum } from '../enums/institution-type.enum';
 
 @ObjectType('Institution')
 @Entity({ tableName: 'institutions' })
@@ -25,6 +34,14 @@ export class InstitutionEntity extends LocalBaseEntity implements IInstitution {
   @Length(3, 100)
   @Matches(NAME_REGEX)
   public name: string;
+
+  @Field(() => InstitutionTypeEnum)
+  @Enum({
+    items: () => InstitutionTypeEnum,
+    columnType: 'varchar(10)',
+  })
+  @IsEnum(InstitutionTypeEnum)
+  public institutionType: InstitutionTypeEnum;
 
   @Field(() => String)
   @Property({ columnType: 'varchar(110)', unique: true })
@@ -52,6 +69,7 @@ export class InstitutionEntity extends LocalBaseEntity implements IInstitution {
   @Length(3, 30)
   public vatNumber: string;
 
+  @Field(() => UserEntity)
   @ManyToOne({
     entity: () => UserEntity,
     onDelete: 'cascade',

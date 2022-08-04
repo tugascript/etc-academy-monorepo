@@ -1624,13 +1624,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fastify/cors@npm:8.0.0, @fastify/cors@npm:^8.0.0":
+"@fastify/cors@npm:8.0.0":
   version: 8.0.0
   resolution: "@fastify/cors@npm:8.0.0"
   dependencies:
     fastify-plugin: ^3.0.0
     vary: ^1.1.2
   checksum: e10cd888225f30a2f715fb66503e91499524c52c9597a608bc0ac15c5ecb71c02057055864f779507b116b243c3fffb594b4e7943b88a708ca1992d8e3c4627d
+  languageName: node
+  linkType: hard
+
+"@fastify/cors@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "@fastify/cors@npm:8.1.0"
+  dependencies:
+    fastify-plugin: ^4.0.0
+    mnemonist: 0.39.2
+  checksum: 7fb48eb743b0e821b8104d308ccc76ccd105ee09ad413bf035c8975e508acb75196cee4fe4ec9b6ee5f9917346fa07fc4c08835e6e953dc7e84f27774aea3857
   languageName: node
   linkType: hard
 
@@ -4105,7 +4115,7 @@ __metadata:
     "@aws-sdk/signature-v4-crt": ^3.130.0
     "@faker-js/faker": ^7.3.0
     "@fastify/cookie": ^7.3.1
-    "@fastify/cors": ^8.0.0
+    "@fastify/cors": ^8.1.0
     "@fastify/csrf-protection": ^5.1.0
     "@fastify/static": ^6.5.0
     "@mikro-orm/cli": ^5.3.0
@@ -8459,6 +8469,15 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: a96865108c6c3b1b8e1d5e9f11843de1e077e57737602de1b82030815f311be11f96f09cce59bd5b903d0b29834733e5313f9301e3ed6d6f6fba2eae0df4298f
+  languageName: node
+  linkType: hard
+
+"mnemonist@npm:0.39.2":
+  version: 0.39.2
+  resolution: "mnemonist@npm:0.39.2"
+  dependencies:
+    obliterator: ^2.0.1
+  checksum: 77075ddf30c5e7ee8ccde6d09b61a2511eb324e9d04871e6cb48ede9ed1d2b002ad121314912bf1926d12ba3cb520ca2fb54c2a6c3f9d4467774af2f447907aa
   languageName: node
   linkType: hard
 

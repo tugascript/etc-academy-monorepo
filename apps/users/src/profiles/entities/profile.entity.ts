@@ -4,7 +4,14 @@ import { LocalBaseEntity } from 'app/common/entities';
 import { IProfile } from '../interfaces/profile.interface';
 import { ProfileRoleEnum, ProfileStatusEnum } from 'app/common/enums';
 import { InstitutionEntity } from '../../institutions/entities/institution.entity';
-import { IsEnum, IsString, Length, Matches } from 'class-validator';
+import {
+  IsEnum,
+  IsString,
+  IsUrl,
+  Length,
+  Matches,
+  MaxLength,
+} from 'class-validator';
 import { SLUG_REGEX } from 'app/common/constants';
 import { UserEntity } from '../../users/entities/user.entity';
 
@@ -35,9 +42,16 @@ export class ProfileEntity extends LocalBaseEntity implements IProfile {
   @IsEnum(ProfileStatusEnum)
   public status: ProfileStatusEnum;
 
+  @Field(() => String, { nullable: true })
+  @IsString()
+  @IsUrl()
+  @MaxLength(250)
+  public picture?: string;
+
   @Field(() => InstitutionEntity)
   @ManyToOne({
     entity: () => InstitutionEntity,
+    inversedBy: (i) => i.profiles,
     onDelete: 'cascade',
   })
   public institution: InstitutionEntity;

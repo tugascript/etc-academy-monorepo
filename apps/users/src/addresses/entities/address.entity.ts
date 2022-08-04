@@ -7,6 +7,7 @@ import { CountryCodesEnum } from '../enums/contry-codes.enum';
 import { IsEnum, IsOptional, IsString, Length, Matches } from 'class-validator';
 import { InstitutionEntity } from '../../institutions/entities/institution.entity';
 import { ADDRESS_REGEX, NAME_REGEX } from 'app/common/constants';
+import { UserEntity } from '../../users/entities/user.entity';
 
 @ObjectType('Address')
 @Entity({ tableName: 'addresses' })
@@ -56,13 +57,18 @@ export class AddressEntity extends LocalBaseEntity implements IAddress {
   @Length(3, 30)
   public zipCode: string;
 
-  @Property({ columnType: 'int' })
-  public authorId: number;
-
   @Field(() => InstitutionEntity)
   @ManyToOne({
     entity: () => InstitutionEntity,
+    inversedBy: (i) => i.addresses,
     onDelete: 'cascade',
   })
   public institution: InstitutionEntity;
+
+  @Field(() => UserEntity)
+  @ManyToOne({
+    entity: () => UserEntity,
+    onDelete: 'cascade',
+  })
+  public author: UserEntity;
 }

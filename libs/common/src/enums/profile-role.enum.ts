@@ -3,5 +3,4 @@ export enum ProfileRoleEnum {
   STAFF = 'STAFF',
   TEACHER = 'TEACHER',
   STUDENT = 'STUDENT',
-  AFFILIATE = 'AFFILIATE',
 }

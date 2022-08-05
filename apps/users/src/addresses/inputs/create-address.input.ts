@@ -1,3 +1,4 @@
+import { ADDRESS_REGEX, NAME_REGEX } from '@app/common/constants';
 import { Field, InputType, Int } from '@nestjs/graphql';
 import {
   IsEnum,
@@ -9,9 +10,8 @@ import {
   Matches,
   Min,
 } from 'class-validator';
-import { ADDRESS_REGEX, NAME_REGEX } from 'app/common/constants';
-import { CountryCodesEnum } from '../enums/contry-codes.enum';
 import { AddressTypeEnum } from '../enums/address-type.enum';
+import { CountryCodesEnum } from '../enums/contry-codes.enum';
 
 @InputType('CreateAddressInput')
 export abstract class CreateAddressInput {

@@ -12,9 +12,9 @@ import {
 } from 'class-validator';
 import { CredentialsEmbeddable } from '../embeddables/credentials.embeddable';
 import { IUser } from '../interfaces/user.interface';
-import { LocalBaseEntity } from 'app/common/entities';
+import { LocalBaseEntity } from '@app/common/entities';
 import { Field, GraphQLTimestamp, ObjectType } from '@nestjs/graphql';
-import { BCRYPT_HASH, NAME_REGEX, SLUG_REGEX } from 'app/common/constants';
+import { BCRYPT_HASH, NAME_REGEX, SLUG_REGEX } from '@app/common/constants';
 
 @ObjectType('User')
 @Entity({ tableName: 'users' })

@@ -1,5 +1,5 @@
 import { IConfig } from './interfaces/config.interface';
-import { redisUrlToOptions } from 'app/common/utils';
+import { redisUrlToOptions } from '@app/common/utils';
 
 export function config(): IConfig {
   const testing = process.env.NODE_ENV !== 'production';

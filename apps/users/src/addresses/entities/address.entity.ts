@@ -1,13 +1,13 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { ADDRESS_REGEX, NAME_REGEX } from '@app/common/constants';
+import { LocalBaseEntity } from '@app/common/entities';
 import { Entity, Enum, ManyToOne, Property } from '@mikro-orm/core';
-import { LocalBaseEntity } from 'app/common/entities';
-import { IAddress } from '../interfaces/address.interface';
-import { AddressTypeEnum } from '../enums/address-type.enum';
-import { CountryCodesEnum } from '../enums/contry-codes.enum';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { IsEnum, IsOptional, IsString, Length, Matches } from 'class-validator';
 import { InstitutionEntity } from '../../institutions/entities/institution.entity';
-import { ADDRESS_REGEX, NAME_REGEX } from 'app/common/constants';
 import { UserEntity } from '../../users/entities/user.entity';
+import { AddressTypeEnum } from '../enums/address-type.enum';
+import { CountryCodesEnum } from '../enums/contry-codes.enum';
+import { IAddress } from '../interfaces/address.interface';
 
 @ObjectType('Address')
 @Entity({ tableName: 'addresses' })

@@ -42,6 +42,12 @@
       ],
       "app/uploader/*": [
         "libs/uploader/src/*"
+      ],
+      "@app/mailer": [
+        "libs/mailer/src"
+      ],
+      "@app/mailer/*": [
+        "libs/mailer/src/*"
       ]
     }
   }

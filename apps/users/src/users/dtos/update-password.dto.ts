@@ -1,5 +1,5 @@
 import { IsString, Length, Matches, MinLength } from 'class-validator';
-import { PASSWORD_REGEX } from 'app/common/constants';
+import { PASSWORD_REGEX } from '@app/common/constants';
 import { IApiId } from '../interfaces/api-id.interface';
 import { ApiUserIdDto } from './api-user-id.dto';
 

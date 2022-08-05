@@ -5,3 +5,5 @@ export * from './query-order.enum';
 export * from './ratio.enum';
 export * from './profile-role.enum';
 export * from './profile-status.enum';
+export * from './request-status.enum';
+export * from './request-user.enum';

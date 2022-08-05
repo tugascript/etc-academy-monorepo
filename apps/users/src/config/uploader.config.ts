@@ -1,6 +1,9 @@
+import {
+  IBucketOptions,
+  IBucketOptionsFactory,
+} from '@app/uploader/interfaces';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { IBucketOptions, IBucketOptionsFactory } from 'app/uploader/interfaces';
 
 @Injectable()
 export class UploaderConfig implements IBucketOptionsFactory {

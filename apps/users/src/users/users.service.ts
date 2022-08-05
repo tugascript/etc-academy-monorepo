@@ -5,12 +5,12 @@ import { compare, hash } from 'bcrypt';
 import { v4 as uuidV4 } from 'uuid';
 import { ProfilePictureDto } from './dtos/profile-picture.dto';
 import { UserEntity } from './entities/user.entity';
-import { CommonService } from 'app/common';
-import { getUserQueryCursor, RatioEnum } from 'app/common/enums';
-import { SearchDto } from 'app/common/dtos';
-import { IPaginated } from 'app/common/interfaces';
-import { LocalMessageType } from 'app/common/entities/gql';
-import { UploaderService } from 'app/uploader';
+import { CommonService } from '@app/common';
+import { getUserQueryCursor, RatioEnum } from '@app/common/enums';
+import { SearchDto } from '@app/common/dtos';
+import { IPaginated } from '@app/common/interfaces';
+import { LocalMessageType } from '@app/common/entities/gql';
+import { UploaderService } from '@app/uploader';
 import { RpcException } from '@nestjs/microservices';
 import { RegisterDto } from './dtos/register.dto';
 import { ChangePasswordDto } from './dtos/change-password.dto';
@@ -237,6 +237,12 @@ export class UsersService {
     id: number,
   ): Promise<UserEntity | undefined | null> {
     return this.usersRepository.findOne({ id });
+  }
+
+  public async uncheckedUserByEmail(
+    email: string,
+  ): Promise<UserEntity | undefined | null> {
+    return this.usersRepository.findOne({ email });
   }
 
   public async userByIdForAuth(id: number): Promise<UserEntity> {

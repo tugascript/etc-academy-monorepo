@@ -1,30 +1,30 @@
-import {
-  BadRequestException,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
-import { InjectRepository } from '@mikro-orm/nestjs';
-import { InstitutionEntity } from './entities/institution.entity';
-import { EntityRepository } from '@mikro-orm/postgresql';
-import { CommonService } from 'app/common';
-import { UploaderService } from 'app/uploader';
-import { CreateInstitutionInput } from './inputs/create-institution.input';
+import { CommonService } from '@app/common';
+import { SearchDto } from '@app/common/dtos';
+import { LocalMessageType } from '@app/common/entities/gql';
 import {
   getQueryCursor,
   ProfileRoleEnum,
   QueryCursorEnum,
   RatioEnum,
-} from 'app/common/enums';
+} from '@app/common/enums';
+import { IPaginated } from '@app/common/interfaces';
+import { UploaderService } from '@app/uploader';
+import { InjectRepository } from '@mikro-orm/nestjs';
+import { EntityRepository } from '@mikro-orm/postgresql';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { AddressesService } from '../addresses/addresses.service';
 import { ProfilesService } from '../profiles/profiles.service';
-import { UpdateInstitutionNameDto } from './dtos/update-institution-name.dto';
-import { IInstitution } from './interfaces/institution.interface';
-import { UpdateInstitutionDescriptionDto } from './dtos/update-institution-description.dto';
-import { UpdateInstitutionPictureDto } from './dtos/update-institution-picture.dto';
-import { LocalMessageType } from 'app/common/entities/gql';
-import { IPaginated } from 'app/common/interfaces';
 import { SearchInstitutionsDto } from './dtos/search-institutions.dto';
-import { SearchDto } from 'app/common/dtos';
+import { UpdateInstitutionDescriptionDto } from './dtos/update-institution-description.dto';
+import { UpdateInstitutionNameDto } from './dtos/update-institution-name.dto';
+import { UpdateInstitutionPictureDto } from './dtos/update-institution-picture.dto';
+import { InstitutionEntity } from './entities/institution.entity';
+import { CreateInstitutionInput } from './inputs/create-institution.input';
+import { IInstitution } from './interfaces/institution.interface';
 
 @Injectable()
 export class InstitutionsService {

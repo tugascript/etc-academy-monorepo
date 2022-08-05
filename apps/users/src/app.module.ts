@@ -1,23 +1,23 @@
+import { AuthGuard, CommonModule } from '@app/common';
+import { GraphQLFederationDriver } from '@app/common/drivers';
+import { UploaderModule } from '@app/uploader';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
+import { AddressesModule } from './addresses/addresses.module';
 import { AppController } from './app.controller';
-import { AuthGuard, CommonModule } from 'app/common';
 import { config } from './config/config';
 import { GqlConfigService } from './config/graphql.config';
 import { MikroOrmConfig } from './config/mikroorm.config';
-import { validationSchema } from './config/validation';
-import { UsersModule } from './users/users.module';
-import { LoadersModule } from './loaders/loaders.module';
-import { UploaderModule } from 'app/uploader';
 import { UploaderConfig } from './config/uploader.config';
-import { GraphQLFederationDriver } from 'app/common/drivers';
-import { APP_GUARD } from '@nestjs/core';
+import { validationSchema } from './config/validation';
+import { EmailModule } from './email/email.module';
 import { InstitutionsModule } from './institutions/institutions.module';
-import { AddressesModule } from './addresses/addresses.module';
+import { LoadersModule } from './loaders/loaders.module';
 import { ProfilesModule } from './profiles/profiles.module';
-import { SubscriptionsModule } from './subscriptions/subscriptions.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -45,7 +45,7 @@ import { SubscriptionsModule } from './subscriptions/subscriptions.module';
     InstitutionsModule,
     AddressesModule,
     ProfilesModule,
-    SubscriptionsModule,
+    EmailModule,
   ],
   providers: [
     {

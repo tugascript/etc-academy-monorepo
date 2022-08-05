@@ -10,9 +10,9 @@ import { IApiId } from './interfaces/api-id.interface';
 import { ApiUserIdDto } from './dtos/api-user-id.dto';
 import { ApiUserEmailDto } from './dtos/api-user-email.dto';
 import { UserEntity } from './entities/user.entity';
-import { IMessageUser, IRedisMessage } from 'app/common/interfaces';
+import { IMessageUser, IRedisMessage } from '@app/common/interfaces';
 import { LoginDto } from './dtos/login.dto';
-import { RedisMessageDto } from 'app/common/dtos';
+import { RedisMessageDto } from '@app/common/dtos';
 import { UserPayloadDto } from './dtos/user-payload.dto';
 
 @UseFilters(new ExceptionFilter())

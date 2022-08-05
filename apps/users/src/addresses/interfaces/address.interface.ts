@@ -1,8 +1,8 @@
-import { IBase } from 'app/common/interfaces';
-import { AddressTypeEnum } from '../enums/address-type.enum';
-import { CountryCodesEnum } from '../enums/contry-codes.enum';
+import { IBase } from '@app/common/interfaces';
 import { IInstitution } from '../../institutions/interfaces/institution.interface';
 import { IUser } from '../../users/interfaces/user.interface';
+import { AddressTypeEnum } from '../enums/address-type.enum';
+import { CountryCodesEnum } from '../enums/contry-codes.enum';
 
 export interface IAddress extends IBase {
   addressType: AddressTypeEnum;

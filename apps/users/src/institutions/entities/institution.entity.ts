@@ -1,4 +1,4 @@
-import { LocalBaseEntity } from 'app/common/entities';
+import { LocalBaseEntity } from '@app/common/entities';
 import { Field, ObjectType } from '@nestjs/graphql';
 import {
   Collection,
@@ -18,7 +18,7 @@ import {
   Length,
   Matches,
 } from 'class-validator';
-import { NAME_REGEX, SLUG_REGEX } from 'app/common/constants';
+import { NAME_REGEX, SLUG_REGEX } from '@app/common/constants';
 import { AddressEntity } from '../../addresses/entities/address.entity';
 import { ProfileEntity } from '../../profiles/entities/profile.entity';
 import { UserEntity } from '../../users/entities/user.entity';

@@ -2,7 +2,7 @@ import { InstitutionDto } from './institution.dto';
 import { ArgsType, Field } from '@nestjs/graphql';
 import { ValidatePromise } from 'class-validator';
 import { Type } from 'class-transformer';
-import { FileUploadDto } from 'app/uploader/dtos';
+import { FileUploadDto } from '@app/uploader/dtos';
 import GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
 
 @ArgsType()

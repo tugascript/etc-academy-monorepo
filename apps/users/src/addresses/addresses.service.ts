@@ -1,13 +1,17 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { CommonService } from 'app/common';
-import { EntityRepository } from '@mikro-orm/postgresql';
-import { AddressEntity } from './entities/address.entity';
+import { CommonService } from '@app/common';
+import { LocalMessageType } from '@app/common/entities/gql';
+import { ProfileRoleEnum } from '@app/common/enums';
 import { InjectRepository } from '@mikro-orm/nestjs';
-import { CreateAddressInput } from './inputs/create-address.input';
+import { EntityRepository } from '@mikro-orm/postgresql';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ProfilesService } from '../profiles/profiles.service';
-import { ProfileRoleEnum } from 'app/common/enums';
-import { InitialAddressInput } from './inputs/initial-address.input';
+import { AddressTypeDto } from './dtos/address-type.dto';
+import { AddressDto } from './dtos/address.dto';
+import { AddressEntity } from './entities/address.entity';
 import { AddressTypeEnum } from './enums/address-type.enum';
+import { CreateAddressInput } from './inputs/create-address.input';
+import { InitialAddressInput } from './inputs/initial-address.input';
+import { UpdateAddressInput } from './inputs/update-address.input';
 
 @Injectable()
 export class AddressesService {
@@ -73,6 +77,78 @@ export class AddressesService {
       true,
     );
     return addressEntity;
+  }
+
+  public async updateAddress(
+    userId: number,
+    {
+      institutionId,
+      addressId,
+      address,
+      address2,
+      city,
+      zipCode,
+      state,
+      country,
+    }: UpdateAddressInput,
+  ): Promise<AddressEntity> {
+    await this.checkProfile(userId, institutionId);
+    const addressEntity = await this.addressById(institutionId, addressId);
+
+    if (address) addressEntity.address = address;
+    if (address2) addressEntity.address2 = address2;
+    if (city) addressEntity.city = city;
+    if (zipCode) addressEntity.zipCode = zipCode;
+    if (state) addressEntity.state = state;
+    if (country) addressEntity.country = country;
+
+    await this.commonService.saveEntity(
+      this.addressesRepository,
+      addressEntity,
+    );
+    return addressEntity;
+  }
+
+  public async deleteAddress(
+    userId: number,
+    { institutionId, addressId }: AddressDto,
+  ): Promise<LocalMessageType> {
+    await this.checkProfile(userId, institutionId);
+    const address = await this.addressById(institutionId, addressId);
+    await this.commonService.removeEntity(this.addressesRepository, address);
+    return new LocalMessageType('Address deleted successfully');
+  }
+
+  public async addressesByInstitution(
+    institutionId: number,
+  ): Promise<AddressEntity[]> {
+    return this.addressesRepository.find({
+      institution: institutionId,
+      addressType: AddressTypeEnum.LOCATION,
+    });
+  }
+
+  public async addressesByType(
+    userId: number,
+    { institutionId, addressType }: AddressTypeDto,
+  ): Promise<AddressEntity[]> {
+    await this.checkProfile(userId, institutionId);
+    return this.addressesRepository.find({
+      institution: institutionId,
+      addressType,
+    });
+  }
+
+  private async addressById(
+    institutionId: number,
+    addressId: number,
+  ): Promise<AddressEntity> {
+    const address = await this.addressesRepository.findOne({
+      id: addressId,
+      institution: institutionId,
+    });
+    this.commonService.checkExistence('Address', address);
+    return address;
   }
 
   private async checkProfile(userId: number, institutionId: number) {

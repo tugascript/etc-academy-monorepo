@@ -7,7 +7,7 @@ import AltairFastify, {
 import {
   MercuriusDriverPlugin,
   MercuriusExtendedDriverConfig,
-} from 'app/common/interfaces';
+} from '@app/common/interfaces';
 import mercuriusCache, { MercuriusCacheOptions } from 'mercurius-cache';
 import Redis, { RedisOptions } from 'ioredis';
 import { MercuriusGatewayService } from 'mercurius';

@@ -10,13 +10,13 @@ import {
 import { GetUserDto } from './dtos/get-user.dto';
 import { ProfilePictureDto } from './dtos/profile-picture.dto';
 import { UserEntity } from './entities/user.entity';
-import { PaginatedUsersType } from './gql-types/paginated-users.type';
+import { PaginatedUsersType } from './entities/gql/paginated-users.type';
 import { UsersService } from './users.service';
 import { UserDto } from './dtos/user.dto';
-import { IAccessUser, IPaginated } from 'app/common/interfaces';
-import { SearchDto } from 'app/common/dtos';
-import { LocalMessageType } from 'app/common/entities/gql';
-import { CurrentUser, Public } from 'app/common/decorators';
+import { IAccessUser, IPaginated } from '@app/common/interfaces';
+import { SearchDto } from '@app/common/dtos';
+import { LocalMessageType } from '@app/common/entities/gql';
+import { CurrentUser, Public } from '@app/common/decorators';
 import { EmailDto } from './dtos/email.dto';
 
 @Resolver(() => UserEntity)
@@ -26,7 +26,7 @@ export class UsersResolver {
   //____________________ MUTATIONS ____________________
 
   @Mutation(() => UserEntity)
-  public async updateProfilePicture(
+  public async updateUsersPicture(
     @CurrentUser() user: IAccessUser,
     @Args() dto: ProfilePictureDto,
   ): Promise<UserEntity> {

@@ -54,7 +54,7 @@
         "tsConfigPath": "libs/uploader/tsconfig.lib.json"
       }
     },
-    "classes": {
+    "courses": {
       "type": "application",
       "root": "apps/courses",
       "entryFile": "main",

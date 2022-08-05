@@ -16,3 +16,5 @@ export type { IRedisMessage } from './redis-message.interface';
 export type { IMessageUser } from './message-user.interface';
 export type { ILoader } from './loader.interface';
 export type { IReference } from './reference.interface';
+export type { IMailerTransport } from './mailer-transport.interface';
+export type { IId } from './id.interface';

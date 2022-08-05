@@ -8,9 +8,9 @@ import {
   ValidateNested,
   ValidatePromise,
 } from 'class-validator';
-import { NAME_REGEX } from 'app/common/constants';
+import { NAME_REGEX } from '@app/common/constants';
 import GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
-import { FileUploadDto } from 'app/uploader/dtos';
+import { FileUploadDto } from '@app/uploader/dtos';
 import { Type } from 'class-transformer';
 import { InitialAddressInput } from '../../addresses/inputs/initial-address.input';
 import { InstitutionTypeEnum } from '../enums/institution-type.enum';

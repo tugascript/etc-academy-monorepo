@@ -7,6 +7,7 @@ import { AuthService } from './auth.service';
 import { ThrottlerConfig } from '../config/throttler.config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { RedisOptions } from 'ioredis';
+import { CommonModule } from '@app/common';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { RedisOptions } from 'ioredis';
         }),
       },
     ]),
+    CommonModule,
     EmailModule,
   ],
   providers: [AuthService],

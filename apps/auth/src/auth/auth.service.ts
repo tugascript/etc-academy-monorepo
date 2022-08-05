@@ -29,12 +29,12 @@ import {
   ITokenPayloadResponse,
 } from './interfaces/token-payload.interface';
 import { ClientProxy } from '@nestjs/microservices';
-import { IMessageUser, IRedisMessage } from 'app/common/interfaces';
+import { IMessageUser, IRedisMessage } from '@app/common/interfaces';
 import { firstValueFrom, timeout } from 'rxjs';
-import { CommonService } from 'app/common';
-import { LocalMessageType } from 'app/common/entities/gql';
+import { CommonService } from '@app/common';
+import { LocalMessageType } from '@app/common/entities/gql';
 import { IJwt, ISingleJwt } from '../config/interfaces/jwt.interface';
-import { generateToken, verifyToken } from 'app/common/utils';
+import { generateToken, verifyToken } from '@app/common/utils';
 
 @Injectable()
 export class AuthService {

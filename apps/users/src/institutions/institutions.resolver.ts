@@ -1,3 +1,8 @@
+import { CurrentUser, Public } from '@app/common/decorators';
+import { SearchDto, SlugDto } from '@app/common/dtos';
+import { FilterRelationDto } from '@app/common/dtos/filter-relation.dto';
+import { LocalMessageType } from '@app/common/entities/gql';
+import { IAccessUser, IPaginated } from '@app/common/interfaces';
 import {
   Args,
   Mutation,
@@ -6,23 +11,18 @@ import {
   Resolver,
   ResolveReference,
 } from '@nestjs/graphql';
-import { InstitutionsService } from './institutions.service';
-import { InstitutionEntity } from './entities/institution.entity';
-import { CurrentUser, Public } from 'app/common/decorators';
-import { IAccessUser, IPaginated } from 'app/common/interfaces';
-import { CreateInstitutionInput } from './inputs/create-institution.input';
-import { UpdateInstitutionNameDto } from './dtos/update-institution-name.dto';
-import { UpdateInstitutionDescriptionDto } from './dtos/update-institution-description.dto';
-import { UpdateInstitutionPictureDto } from './dtos/update-institution-picture.dto';
-import { LocalMessageType } from 'app/common/entities/gql';
-import { InstitutionDto } from './dtos/institution.dto';
-import { SearchDto, SlugDto } from 'app/common/dtos';
-import { PaginatedInstitutionsType } from './entities/gql/paginated-institutions.type';
-import { SearchInstitutionsDto } from './dtos/search-institutions.dto';
-import { UserEntity } from '../users/entities/user.entity';
 import { AddressEntity } from '../addresses/entities/address.entity';
 import { PaginatedProfilesType } from '../profiles/entities/gql/paginated-profiles.type';
-import { FilterRelationDto } from 'app/common/dtos/filter-relation.dto';
+import { UserEntity } from '../users/entities/user.entity';
+import { InstitutionDto } from './dtos/institution.dto';
+import { SearchInstitutionsDto } from './dtos/search-institutions.dto';
+import { UpdateInstitutionDescriptionDto } from './dtos/update-institution-description.dto';
+import { UpdateInstitutionNameDto } from './dtos/update-institution-name.dto';
+import { UpdateInstitutionPictureDto } from './dtos/update-institution-picture.dto';
+import { PaginatedInstitutionsType } from './entities/gql/paginated-institutions.type';
+import { InstitutionEntity } from './entities/institution.entity';
+import { CreateInstitutionInput } from './inputs/create-institution.input';
+import { InstitutionsService } from './institutions.service';
 
 @Resolver(() => InstitutionEntity)
 export class InstitutionsResolver {

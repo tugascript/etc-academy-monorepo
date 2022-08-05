@@ -1,8 +1,8 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Entity, Enum, ManyToOne, Property, Unique } from '@mikro-orm/core';
-import { LocalBaseEntity } from 'app/common/entities';
+import { LocalBaseEntity } from '@app/common/entities';
 import { IProfile } from '../interfaces/profile.interface';
-import { ProfileRoleEnum, ProfileStatusEnum } from 'app/common/enums';
+import { ProfileRoleEnum, ProfileStatusEnum } from '@app/common/enums';
 import { InstitutionEntity } from '../../institutions/entities/institution.entity';
 import {
   IsEnum,
@@ -12,7 +12,7 @@ import {
   Matches,
   MaxLength,
 } from 'class-validator';
-import { SLUG_REGEX } from 'app/common/constants';
+import { SLUG_REGEX } from '@app/common/constants';
 import { UserEntity } from '../../users/entities/user.entity';
 
 @ObjectType('Profile')

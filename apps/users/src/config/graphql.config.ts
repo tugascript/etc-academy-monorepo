@@ -1,3 +1,4 @@
+import { MercuriusExtendedDriverConfig } from '@app/common/interfaces';
 import { HttpException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GqlOptionsFactory } from '@nestjs/graphql';
@@ -6,7 +7,6 @@ import AltairFastify, {
 } from 'altair-fastify-plugin';
 import { GraphQLError } from 'graphql';
 import { LoadersService } from '../loaders/loaders.service';
-import { MercuriusExtendedDriverConfig } from 'app/common/interfaces';
 
 @Injectable()
 export class GqlConfigService implements GqlOptionsFactory {

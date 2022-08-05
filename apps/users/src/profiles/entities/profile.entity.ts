@@ -1,9 +1,8 @@
-import { Field, ObjectType } from '@nestjs/graphql';
-import { Entity, Enum, ManyToOne, Property, Unique } from '@mikro-orm/core';
+import { SLUG_REGEX } from '@app/common/constants';
 import { LocalBaseEntity } from '@app/common/entities';
-import { IProfile } from '../interfaces/profile.interface';
 import { ProfileRoleEnum, ProfileStatusEnum } from '@app/common/enums';
-import { InstitutionEntity } from '../../institutions/entities/institution.entity';
+import { Entity, Enum, ManyToOne, Property, Unique } from '@mikro-orm/core';
+import { Field, ObjectType } from '@nestjs/graphql';
 import {
   IsEnum,
   IsString,
@@ -12,8 +11,9 @@ import {
   Matches,
   MaxLength,
 } from 'class-validator';
-import { SLUG_REGEX } from '@app/common/constants';
+import { InstitutionEntity } from '../../institutions/entities/institution.entity';
 import { UserEntity } from '../../users/entities/user.entity';
+import { IProfile } from '../interfaces/profile.interface';
 
 @ObjectType('Profile')
 @Entity({ tableName: 'profiles' })
@@ -60,6 +60,7 @@ export class ProfileEntity extends LocalBaseEntity implements IProfile {
   @ManyToOne({
     entity: () => UserEntity,
     onDelete: 'cascade',
+    inversedBy: (u) => u.profiles,
   })
   public user: UserEntity;
 }

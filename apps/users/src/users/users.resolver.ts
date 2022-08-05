@@ -1,3 +1,7 @@
+import { CurrentUser, Public } from '@app/common/decorators';
+import { SearchDto } from '@app/common/dtos';
+import { LocalMessageType } from '@app/common/entities/gql';
+import { IAccessUser, IPaginated } from '@app/common/interfaces';
 import {
   Args,
   Mutation,
@@ -7,17 +11,16 @@ import {
   Resolver,
   ResolveReference,
 } from '@nestjs/graphql';
+import { FilterRelationDto } from 'app/common/dtos/filter-relation.dto';
+import { PaginatedInstitutionsType } from '../institutions/entities/gql/paginated-institutions.type';
+import { PaginatedProfilesType } from '../profiles/entities/gql/paginated-profiles.type';
+import { EmailDto } from './dtos/email.dto';
 import { GetUserDto } from './dtos/get-user.dto';
 import { ProfilePictureDto } from './dtos/profile-picture.dto';
-import { UserEntity } from './entities/user.entity';
-import { PaginatedUsersType } from './entities/gql/paginated-users.type';
-import { UsersService } from './users.service';
 import { UserDto } from './dtos/user.dto';
-import { IAccessUser, IPaginated } from '@app/common/interfaces';
-import { SearchDto } from '@app/common/dtos';
-import { LocalMessageType } from '@app/common/entities/gql';
-import { CurrentUser, Public } from '@app/common/decorators';
-import { EmailDto } from './dtos/email.dto';
+import { PaginatedUsersType } from './entities/gql/paginated-users.type';
+import { UserEntity } from './entities/user.entity';
+import { UsersService } from './users.service';
 
 @Resolver(() => UserEntity)
 export class UsersResolver {
@@ -93,6 +96,16 @@ export class UsersResolver {
     @CurrentUser() user: IAccessUser,
   ): string | null {
     return userEntity.id === user.id ? userEntity.email : null;
+  }
+
+  @ResolveField('profiles', () => PaginatedProfilesType)
+  public getProfiles(@Args() _: FilterRelationDto) {
+    return;
+  }
+
+  @ResolveField('institutions', () => PaginatedInstitutionsType)
+  public getInstitutions(@Args() _: FilterRelationDto) {
+    return;
   }
 
   // Resolved by the loaders

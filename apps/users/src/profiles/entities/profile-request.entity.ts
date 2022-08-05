@@ -1,16 +1,18 @@
 import { LocalBaseEntity } from '@app/common/entities';
-import { IProfileRequest } from '../interfaces/profile-request.interface';
 import {
   ProfileRoleEnum,
   ProfileStatusEnum,
   RequestStatusEnum,
 } from '@app/common/enums';
+import { Entity, Enum, ManyToOne } from '@mikro-orm/core';
+import { Field, ObjectType } from '@nestjs/graphql';
+import { IsEnum } from 'class-validator';
 import { InstitutionEntity } from '../../institutions/entities/institution.entity';
 import { UserEntity } from '../../users/entities/user.entity';
-import { Field } from '@nestjs/graphql';
-import { Enum, ManyToOne } from '@mikro-orm/core';
-import { IsEnum } from 'class-validator';
+import { IProfileRequest } from '../interfaces/profile-request.interface';
 
+@ObjectType('ProfileRequest')
+@Entity({ tableName: 'profile_requests' })
 export class ProfileRequestEntity
   extends LocalBaseEntity
   implements IProfileRequest

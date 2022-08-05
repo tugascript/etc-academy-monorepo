@@ -1,5 +1,15 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
-import { Embedded, Entity, OptionalProps, Property } from '@mikro-orm/core';
+import { BCRYPT_HASH, NAME_REGEX, SLUG_REGEX } from '@app/common/constants';
+import { LocalBaseEntity } from '@app/common/entities';
+import {
+  Collection,
+  Embedded,
+  Entity,
+  OneToMany,
+  OptionalProps,
+  Property,
+} from '@mikro-orm/core';
+import { Field, GraphQLTimestamp, ObjectType } from '@nestjs/graphql';
 import {
   IsBoolean,
   IsDate,
@@ -10,11 +20,10 @@ import {
   Length,
   Matches,
 } from 'class-validator';
+import { InstitutionEntity } from '../../institutions/entities/institution.entity';
+import { ProfileEntity } from '../../profiles/entities/profile.entity';
 import { CredentialsEmbeddable } from '../embeddables/credentials.embeddable';
 import { IUser } from '../interfaces/user.interface';
-import { LocalBaseEntity } from '@app/common/entities';
-import { Field, GraphQLTimestamp, ObjectType } from '@nestjs/graphql';
-import { BCRYPT_HASH, NAME_REGEX, SLUG_REGEX } from '@app/common/constants';
 
 @ObjectType('User')
 @Entity({ tableName: 'users' })
@@ -89,4 +98,14 @@ export class UserEntity extends LocalBaseEntity implements IUser {
   @Property()
   @IsDate()
   public lastOnline: Date = new Date();
+
+  @OneToMany(() => ProfileEntity, (p) => p.user)
+  public profiles: Collection<ProfileEntity, UserEntity> = new Collection<
+    ProfileEntity,
+    UserEntity
+  >(this);
+
+  @OneToMany(() => InstitutionEntity, (i) => i.owner)
+  public institutions: Collection<InstitutionEntity, UserEntity> =
+    new Collection<InstitutionEntity, UserEntity>(this);
 }

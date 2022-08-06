@@ -1,14 +1,20 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { ProfilesService } from '../profiles.service';
-import { ProfileRequestEntity } from '../entities/profile-request.entity';
-import { LocalMessageType } from '@app/common/entities/gql';
 import { CurrentUser } from '@app/common/decorators';
+import { LocalMessageType } from '@app/common/entities/gql';
 import { IAccessUser, IPaginated } from '@app/common/interfaces';
-import { CreateProfileInput } from '../inputs/create-profile.input';
-import { RespondToProfileRequestInput } from '../inputs/respond-to-profile-request.input';
+import {
+  Args,
+  Mutation,
+  Query,
+  Resolver,
+  ResolveReference,
+} from '@nestjs/graphql';
+import { FilterProfileRequestsDto } from '../dtos/filter-profile-requests.dto';
 import { ProfileRequestDto } from '../dtos/profile-request.dto';
 import { PaginatedProfileRequestsType } from '../entities/gql/paginated-profile-requests.type';
-import { FilterProfileRequestsDto } from '../dtos/filter-profile-requests.dto';
+import { ProfileRequestEntity } from '../entities/profile-request.entity';
+import { CreateProfileInput } from '../inputs/create-profile.input';
+import { RespondToProfileRequestInput } from '../inputs/respond-to-profile-request.input';
+import { ProfilesService } from '../profiles.service';
 
 @Resolver(() => ProfileRequestEntity)
 export class ProfileRequestsResolver {
@@ -47,5 +53,10 @@ export class ProfileRequestsResolver {
     @Args() dto: FilterProfileRequestsDto,
   ): Promise<IPaginated<ProfileRequestEntity>> {
     return this.profilesService.filterProfileRequests(user.id, dto);
+  }
+
+  @ResolveReference()
+  public resolveReference(_: unknown) {
+    return;
   }
 }

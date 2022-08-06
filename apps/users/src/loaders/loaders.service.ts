@@ -4,10 +4,17 @@ import { EntityManager } from '@mikro-orm/postgresql';
 import { Injectable, Type } from '@nestjs/common';
 import { IBase, ILoader, IPaginated, IReference } from 'app/common/interfaces';
 import { MercuriusContext } from 'mercurius';
+import { AddressEntity } from '../addresses/entities/address.entity';
 import { InstitutionEntity } from '../institutions/entities/institution.entity';
+import { InvitationEntity } from '../profiles/entities/invitation.entity';
+import { ProfileRequestEntity } from '../profiles/entities/profile-request.entity';
 import { ProfileEntity } from '../profiles/entities/profile.entity';
 import { UserEntity } from '../users/entities/user.entity';
+import { IAddressReference } from './interfaces/address-reference.interface';
+import { IInstitutionReference } from './interfaces/institution-reference.interface';
+import { IInvitationReference } from './interfaces/invitation-reference.interface';
 import { IProfileReference } from './interfaces/profile-reference.interface';
+import { IProfileRequestReference } from './interfaces/profile-request-reference.interface';
 import { IUserReference } from './interfaces/user-reference.interface';
 
 @Injectable()
@@ -118,6 +125,28 @@ export class LoadersService {
         user: this.loadProfilesUser(),
         institution: this.loadProfilesInstitution(),
       },
+      Invitation: {
+        __resolveReference: this.loadInvitationsReferences(),
+        institution: this.loadInvitationsInstitution(),
+        sender: this.loadInvitationsSender(),
+      },
+      ProfileRequest: {
+        __resolveReference: this.loadProfileRequestsReferences(),
+        institution: this.loadProfileRequestsInstitution(),
+        sender: this.loadProfileRequestsSender(),
+        recipient: this.loadProfileRequestsRecipient(),
+      },
+      Institution: {
+        __resolveReference: this.loadInstitutionsReferences(),
+        owner: this.loadInstitutionsOwner(),
+        profiles: this.loadInstitutionsProfiles(),
+        addresses: this.loadInstitutionsAddresses(),
+      },
+      Address: {
+        __resolveReference: this.loadAddressesReferences(),
+        institution: this.loadAddressesInstitution(),
+        owner: this.loadAddressesOwner(),
+      },
     };
   }
 
@@ -201,6 +230,206 @@ export class LoadersService {
         },
       });
       const map = LoadersService.getEntityMap(institutions);
+      return LoadersService.getResults(ids, map);
+    };
+  }
+
+  private loadInstitutionsReferences() {
+    return async (
+      items: ILoader<IInstitutionReference>[],
+      _: MercuriusContext,
+    ): Promise<InstitutionEntity[]> => {
+      return this.loadReferences(items, InstitutionEntity);
+    };
+  }
+
+  private loadInstitutionsOwner() {
+    return async (
+      items: ILoader<InstitutionEntity>[],
+      _: MercuriusContext,
+    ): Promise<UserEntity[]> => {
+      if (items.length === 0) return [];
+      const ids = LoadersService.getRelationIds(items, 'owner');
+      const users = await this.em.find(UserEntity, {
+        id: {
+          $in: ids,
+        },
+      });
+      const map = LoadersService.getEntityMap(users);
+      return LoadersService.getResults(ids, map);
+    };
+  }
+
+  private loadInstitutionsAddresses() {
+    return async (
+      items: ILoader<InstitutionEntity>[],
+      _: MercuriusContext,
+    ): Promise<AddressEntity[][]> => {
+      if (items.length === 0) return [];
+      const entities = LoadersService.getEntities(items);
+      await this.em.populate(entities, ['addresses']);
+      return entities.map((entity) => entity.addresses.getItems());
+    };
+  }
+
+  private loadInstitutionsProfiles() {
+    return async (
+      items: ILoader<InstitutionEntity, FilterRelationDto>[],
+      _: MercuriusContext,
+    ): Promise<IPaginated<ProfileEntity>[]> => {
+      return this.basicPaginator(
+        items,
+        InstitutionEntity,
+        ProfileEntity,
+        'profiles',
+        'institution',
+        'slug',
+      );
+    };
+  }
+
+  private loadInvitationsReferences() {
+    return async (
+      items: ILoader<IInvitationReference>[],
+      _: MercuriusContext,
+    ): Promise<InvitationEntity[]> => {
+      return this.loadReferences(items, InvitationEntity);
+    };
+  }
+
+  private loadInvitationsInstitution() {
+    return async (
+      items: ILoader<InvitationEntity>[],
+      _: MercuriusContext,
+    ): Promise<InstitutionEntity[]> => {
+      if (items.length === 0) return [];
+      const ids = LoadersService.getRelationIds(items, 'institution');
+      const institutions = await this.em.find(InstitutionEntity, {
+        id: {
+          $in: ids,
+        },
+      });
+      const map = LoadersService.getEntityMap(institutions);
+      return LoadersService.getResults(ids, map);
+    };
+  }
+
+  private loadInvitationsSender() {
+    return async (
+      items: ILoader<InvitationEntity>[],
+      _: MercuriusContext,
+    ): Promise<UserEntity[]> => {
+      if (items.length === 0) return [];
+      const ids = LoadersService.getRelationIds(items, 'sender');
+      const users = await this.em.find(UserEntity, {
+        id: {
+          $in: ids,
+        },
+      });
+      const map = LoadersService.getEntityMap(users);
+      return LoadersService.getResults(ids, map);
+    };
+  }
+
+  private loadProfileRequestsReferences() {
+    return async (
+      items: ILoader<IProfileRequestReference>[],
+      _: MercuriusContext,
+    ): Promise<ProfileRequestEntity[]> => {
+      return this.loadReferences(items, ProfileRequestEntity);
+    };
+  }
+
+  private loadProfileRequestsInstitution() {
+    return async (
+      items: ILoader<ProfileRequestEntity>[],
+      _: MercuriusContext,
+    ): Promise<InstitutionEntity[]> => {
+      if (items.length === 0) return [];
+      const ids = LoadersService.getRelationIds(items, 'institution');
+      const institutions = await this.em.find(InstitutionEntity, {
+        id: {
+          $in: ids,
+        },
+      });
+      const map = LoadersService.getEntityMap(institutions);
+      return LoadersService.getResults(ids, map);
+    };
+  }
+
+  private loadProfileRequestsRecipient() {
+    return async (
+      items: ILoader<ProfileRequestEntity>[],
+      _: MercuriusContext,
+    ): Promise<UserEntity[]> => {
+      if (items.length === 0) return [];
+      const ids = LoadersService.getRelationIds(items, 'recipient');
+      const users = await this.em.find(UserEntity, {
+        id: {
+          $in: ids,
+        },
+      });
+      const map = LoadersService.getEntityMap(users);
+      return LoadersService.getResults(ids, map);
+    };
+  }
+
+  private loadProfileRequestsSender() {
+    return async (
+      items: ILoader<ProfileRequestEntity>[],
+      _: MercuriusContext,
+    ): Promise<UserEntity[]> => {
+      if (items.length === 0) return [];
+      const ids = LoadersService.getRelationIds(items, 'sender');
+      const users = await this.em.find(UserEntity, {
+        id: {
+          $in: ids,
+        },
+      });
+      const map = LoadersService.getEntityMap(users);
+      return LoadersService.getResults(ids, map);
+    };
+  }
+
+  private loadAddressesReferences() {
+    return async (
+      items: ILoader<IAddressReference>[],
+      _: MercuriusContext,
+    ): Promise<AddressEntity[]> => {
+      return this.loadReferences(items, AddressEntity);
+    };
+  }
+
+  private loadAddressesInstitution() {
+    return async (
+      items: ILoader<AddressEntity>[],
+      _: MercuriusContext,
+    ): Promise<InstitutionEntity[]> => {
+      if (items.length === 0) return [];
+      const ids = LoadersService.getRelationIds(items, 'institution');
+      const institutions = await this.em.find(InstitutionEntity, {
+        id: {
+          $in: ids,
+        },
+      });
+      const map = LoadersService.getEntityMap(institutions);
+      return LoadersService.getResults(ids, map);
+    };
+  }
+
+  private loadAddressesOwner() {
+    return async (
+      items: ILoader<AddressEntity>[],
+      _: MercuriusContext,
+    ): Promise<UserEntity[]> => {
+      if (items.length === 0) return [];
+      const ids = LoadersService.getRelationIds(items, 'owner');
+      const users = await this.em.find(UserEntity, {
+        id: {
+          $in: ids,
+        },
+      });
+      const map = LoadersService.getEntityMap(users);
       return LoadersService.getResults(ids, map);
     };
   }

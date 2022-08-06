@@ -13,7 +13,6 @@ import {
 } from '@nestjs/graphql';
 import { AddressEntity } from '../addresses/entities/address.entity';
 import { PaginatedProfilesType } from '../profiles/entities/gql/paginated-profiles.type';
-import { UserEntity } from '../users/entities/user.entity';
 import { InstitutionDto } from './dtos/institution.dto';
 import { SearchInstitutionsDto } from './dtos/search-institutions.dto';
 import { UpdateInstitutionDescriptionDto } from './dtos/update-institution-description.dto';
@@ -108,11 +107,6 @@ export class InstitutionsResolver {
     @Args() dto: SearchDto,
   ): Promise<IPaginated<InstitutionEntity>> {
     return this.institutionsService.usersInstitutions(user.id, dto);
-  }
-
-  @ResolveField('owner', () => UserEntity)
-  public getUser() {
-    return;
   }
 
   @ResolveField('addresses', () => [AddressEntity])

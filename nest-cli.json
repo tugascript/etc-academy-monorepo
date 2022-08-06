@@ -62,6 +62,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/courses/tsconfig.app.json"
       }
+    },
+    "frontend": {
+      "type": "application",
+      "root": "apps/frontend",
+      "entryFile": "main",
+      "sourceRoot": "apps/frontend/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/frontend/tsconfig.app.json"
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
-import { IBase } from 'app/common/interfaces';
 import { Collection } from '@mikro-orm/core';
+import { IBase } from '../../common/interfaces';
 import { IUser } from '../../users/interfaces/user.interface';
 import { InstitutionTypeEnum } from '../enums/institution-type.enum';
 

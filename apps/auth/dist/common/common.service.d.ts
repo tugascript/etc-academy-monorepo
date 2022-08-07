@@ -1,0 +1,32 @@
+import { Dictionary } from '@mikro-orm/core';
+import { EntityRepository, QueryBuilder } from '@mikro-orm/postgresql';
+import { ChangeTypeEnum } from './enums/change-type.enum';
+import { ProfileRoleEnum } from './enums/profile-role.enum';
+import { QueryOrderEnum } from './enums/query-order.enum';
+import { IAccessUser } from './interfaces';
+import { IBase } from './interfaces/base.interface';
+import { IChange } from './interfaces/change.interface';
+import { IPaginated } from './interfaces/paginated.interface';
+export declare class CommonService {
+    private static getOrderBy;
+    private static getFilters;
+    private static encodeCursor;
+    private static createEdge;
+    paginate<T>(instances: T[], currentCount: number, previousCount: number, cursor: keyof T, first: number, innerCursor?: string): IPaginated<T>;
+    decodeCursor(cursor: string, isNum?: boolean): string | number;
+    queryBuilderPagination<T>(alias: string, cursor: keyof T, first: number, order: QueryOrderEnum, qb: QueryBuilder<T>, after?: string, afterIsNum?: boolean, innerCursor?: string): Promise<IPaginated<T>>;
+    generateChange<T extends IBase>(entity: T, changeType: ChangeTypeEnum): IChange<T>;
+    formatTitle(title: string): string;
+    formatSearch(search: string): string;
+    generatePointSlug(str: string): string;
+    generateSlug(str: string): string;
+    checkExistence<T>(name: string, entity?: T | null): void;
+    validateEntity(entity: Dictionary): Promise<void>;
+    saveEntity<T = Dictionary>(repo: EntityRepository<T>, entity: T, isNew?: boolean): Promise<void>;
+    removeEntity<T = Dictionary>(repo: EntityRepository<T>, entity: T): Promise<void>;
+    throwDuplicateError<T>(promise: Promise<T>, message?: string): Promise<T>;
+    throwInternalError<T>(promise: Promise<T>): Promise<T>;
+    transformVideoURL(url: string): string;
+    verifyAccessToken(token: string): Promise<IAccessUser>;
+    getUserRole(user: IAccessUser, institutionId: number): ProfileRoleEnum;
+}

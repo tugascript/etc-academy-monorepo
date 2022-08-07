@@ -1,0 +1,33 @@
+import { EntityRepository } from '@mikro-orm/postgresql';
+import { ConfigService } from '@nestjs/config';
+import { ClientProxy } from '@nestjs/microservices';
+import { CommonService } from '../common';
+import { LocalMessageType } from '../common/entities/gql';
+import { IAccessUser, IPaginated } from '../common/interfaces';
+import { CoursesService } from '../courses/courses.service';
+import { FilterProfilesDto } from './dtos/filter-profiles.dto';
+import { ProfileSlugDto } from './dtos/profile-slug.dto';
+import { ProfileDto } from './dtos/profile.dto';
+import { UpdateProfileStatusDto } from './dtos/update-profile-status.dto';
+import { CourseProfileEntity } from './entities/course-profile.entity';
+import { CreateProfileInput } from './inputs/create-profile.input';
+export declare class ProfilesService {
+    private readonly profilesRepository;
+    private readonly commonService;
+    private readonly configService;
+    private readonly coursesService;
+    private readonly usersClient;
+    private readonly coursesNamespace;
+    constructor(profilesRepository: EntityRepository<CourseProfileEntity>, commonService: CommonService, configService: ConfigService, coursesService: CoursesService, usersClient: ClientProxy);
+    createInitialProfile(user: IAccessUser, institutionId: number, courseId: number): Promise<CourseProfileEntity>;
+    createProfile(user: IAccessUser, { courseId, profileId, role, status }: CreateProfileInput): Promise<CourseProfileEntity>;
+    updateProfileStatus(user: IAccessUser, { courseId, profileId, status }: UpdateProfileStatusDto): Promise<CourseProfileEntity>;
+    deleteProfile(user: IAccessUser, { courseId, profileId }: ProfileDto): Promise<LocalMessageType>;
+    profileById(user: IAccessUser, { courseId, profileId }: ProfileDto): Promise<CourseProfileEntity>;
+    profileBySlug(user: IAccessUser, { courseId, slug }: ProfileSlugDto): Promise<CourseProfileEntity>;
+    filterProfiles(user: IAccessUser, { courseId, order, first, after }: FilterProfilesDto): Promise<IPaginated<CourseProfileEntity>>;
+    profileByUserId(userId: number, courseId: number): Promise<CourseProfileEntity>;
+    checkProfileExistence(userId: number, courseId: number): Promise<void>;
+    private getProfileById;
+    private getMessageProfile;
+}

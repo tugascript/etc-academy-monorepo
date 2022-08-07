@@ -1,0 +1,30 @@
+import { FilterRelationDto, SlugDto } from '../common/dtos';
+import { LocalMessageType } from '../common/entities/gql';
+import { IAccessUser, IPaginated, IReference } from '../common/interfaces';
+import { CoursesService } from './courses.service';
+import { CourseDto } from './dtos/course.dto';
+import { FilterCoursesDto } from './dtos/filter-courses.dto';
+import { UpdateCourseDescriptionDto } from './dtos/update-course-description.dto';
+import { UpdateCourseNameDto } from './dtos/update-course-name.dto';
+import { UpdateCoursePictureDto } from './dtos/update-course-picture.dto';
+import { UpdateCourseTypeDto } from './dtos/update-course-type.dto';
+import { CourseEntity } from './entities/course.entity';
+import { CreateCourseInput } from './inputs/create-course.input';
+export declare class CoursesResolver {
+    private readonly coursesService;
+    constructor(coursesService: CoursesService);
+    createCourse(user: IAccessUser, input: CreateCourseInput): Promise<CourseEntity>;
+    updateCourseName(user: IAccessUser, dto: UpdateCourseNameDto): Promise<CourseEntity>;
+    updateCourseDescription(user: IAccessUser, dto: UpdateCourseDescriptionDto): Promise<CourseEntity>;
+    updateCoursePicture(user: IAccessUser, dto: UpdateCoursePictureDto): Promise<CourseEntity>;
+    updateCourseType(user: IAccessUser, dto: UpdateCourseTypeDto): Promise<CourseEntity>;
+    deleteCourse(user: IAccessUser, dto: CourseDto): Promise<LocalMessageType>;
+    courseById(user: IAccessUser, dto: CourseDto): Promise<CourseEntity>;
+    courseBySlug(user: IAccessUser, dto: SlugDto): Promise<CourseEntity>;
+    filterCourses(user: IAccessUser, dto: FilterCoursesDto): Promise<IPaginated<CourseEntity>>;
+    resolveReference(_: IReference): void;
+    getAuthor(course: CourseEntity): IReference;
+    getInstitution(course: CourseEntity): IReference;
+    getProfiles(_: FilterRelationDto): Promise<void>;
+    getLessons(_: FilterRelationDto): Promise<void>;
+}

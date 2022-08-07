@@ -1,21 +1,23 @@
+import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { ConfigModule } from '@nestjs/config';
-import { config } from './config/config';
 import { GraphQLModule } from '@nestjs/graphql';
-import { GraphQLGatewayDriver } from '@app/common/drivers';
-import { GqlConfigService } from './config/graphql.config';
+import { AppController } from './app.controller';
+import { config } from './config/config';
+import { GraphQLConfig } from './config/graphql.config';
+import { validationSchema } from './config/validation';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      validationSchema,
       load: [config],
     }),
-    GraphQLModule.forRootAsync({
+    GraphQLModule.forRootAsync<ApolloGatewayDriverConfig>({
+      driver: ApolloGatewayDriver,
       imports: [ConfigModule],
-      driver: GraphQLGatewayDriver,
-      useClass: GqlConfigService,
+      useClass: GraphQLConfig,
     }),
   ],
   controllers: [AppController],

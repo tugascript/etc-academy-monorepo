@@ -1,13 +1,13 @@
+import { ServiceEndpointDefinition } from '@apollo/gateway';
 import { MikroOrmModuleOptions } from '@mikro-orm/nestjs';
-import { RedisOptions } from 'ioredis';
-import { MercuriusGatewayService } from 'mercurius';
 import { UploadOptions } from 'graphql-upload';
+import { RedisOptions } from 'ioredis';
 
 export interface IConfig {
   port: number;
   db: MikroOrmModuleOptions;
   redis: RedisOptions;
   testing: boolean;
-  services: MercuriusGatewayService[];
+  services: ServiceEndpointDefinition[];
   upload: UploadOptions;
 }

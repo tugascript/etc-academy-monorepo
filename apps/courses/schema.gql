@@ -1,0 +1,289 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+directive @key(fields: String!, resolvable: Boolean = true) repeatable on OBJECT | INTERFACE
+
+directive @extends on OBJECT | INTERFACE
+
+directive @external on OBJECT | FIELD_DEFINITION
+
+directive @requires(fields: String!) on FIELD_DEFINITION
+
+directive @provides(fields: String!) on FIELD_DEFINITION
+
+directive @shareable on FIELD_DEFINITION | OBJECT
+
+directive @link(url: String!, import: [link__Import]) on SCHEMA
+
+directive @tag(name: String!) repeatable on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @inaccessible on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUMENT_DEFINITION | SCALAR | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @override(from: String!) on FIELD_DEFINITION
+
+type PageInfo {
+  startCursor: String!
+  endCursor: String!
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+}
+
+type Message {
+  id: ID!
+  message: String!
+}
+
+type User {
+  id: ID!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  name: String!
+  username: String!
+  email: String!
+  picture: String
+  lastOnline: Timestamp!
+  lastLogin: Timestamp!
+}
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
+type Institution {
+  id: ID!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  name: String!
+  institutionType: InstitutionType!
+  slug: String!
+  picture: String!
+  description: String
+  vatNumber: String!
+  owner: User!
+}
+
+enum InstitutionType {
+  PERSONAL
+  SCHOOL
+  TUTOR
+  UNIVERSITY
+  COLLEGE
+  OTHER
+}
+
+type InstitutionProfile {
+  id: ID!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  slug: String!
+  role: ProfileRole!
+  status: ProfileStatus!
+  picture: String
+  institution: Institution!
+  user: User!
+}
+
+enum ProfileRole {
+  ADMIN
+  STAFF
+  TEACHER
+  STUDENT
+}
+
+enum ProfileStatus {
+  STAFF
+  ENROLLED
+  STUDYING
+  GRADUATED
+}
+
+type CourseProfile {
+  id: ID!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  slug: String!
+  role: ProfileRole!
+  status: ProfileStatus!
+  course: Course!
+  institutionProfile: InstitutionProfile!
+  user: User!
+  institution: Institution!
+  managedLessons(order: QueryOrder = ASC, first: Int = 10): PaginatedLessons!
+}
+
+enum QueryOrder {
+  ASC
+  DESC
+}
+
+type LessonResource {
+  id: ID!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  link: String!
+  resourceType: DocumentType!
+  title: String!
+  info: String
+  lesson: Lesson!
+}
+
+enum DocumentType {
+  PDF
+  DOCUMENT
+  PRESENTATION
+  CALC_SHEET
+}
+
+type Lesson {
+  id: ID!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  title: String!
+  available: Boolean!
+  lessonType: LessonType!
+  link: String
+  num: Int!
+  time: Timestamp!
+  course: Course!
+  manager: CourseProfile!
+}
+
+enum LessonType {
+  IN_PERSON
+  ONLINE
+}
+
+type Course {
+  id: ID!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  name: String!
+  slug: String!
+  courseType: CourseType!
+  picture: String
+  description: String
+  author: User!
+  institution: Institution!
+  profiles(order: QueryOrder = ASC, first: Int = 10): PaginatedCourseProfiles!
+  lessons(order: QueryOrder = ASC, first: Int = 10): PaginatedLessons!
+}
+
+enum CourseType {
+  IN_PERSON
+  ONLINE
+  HYBRID
+}
+
+type LessonEntityPageEdge {
+  cursor: String!
+  node: Lesson!
+}
+
+type PaginatedLessons {
+  previousCount: Int!
+  currentCount: Int!
+  edges: [LessonEntityPageEdge!]!
+  pageInfo: PageInfo!
+}
+
+type CourseProfileEntityPageEdge {
+  cursor: String!
+  node: CourseProfile!
+}
+
+type PaginatedCourseProfiles {
+  previousCount: Int!
+  currentCount: Int!
+  edges: [CourseProfileEntityPageEdge!]!
+  pageInfo: PageInfo!
+}
+
+type CourseEntityPageEdge {
+  cursor: String!
+  node: Course!
+}
+
+type PaginatedCourses {
+  previousCount: Int!
+  currentCount: Int!
+  edges: [CourseEntityPageEdge!]!
+  pageInfo: PageInfo!
+}
+
+type Query {
+  courseById(courseId: Int!): Course!
+  courseBySlug(slug: String!): Course!
+  filterCourses(search: String, cursor: QueryCursor = DATE, order: QueryOrder = DESC, after: String, first: Int = 10, institutionId: Int!): PaginatedCourses!
+  courseProfileById(courseId: Int!, profileId: Int!): CourseProfile!
+  courseProfileBySlug(courseId: Int!, slug: String!): CourseProfile!
+  filterCourseProfiles(order: QueryOrder = DESC, after: String, first: Int = 10, courseId: Int!): PaginatedCourseProfiles!
+  lessonById(courseId: Int!, lessonId: Int!): Lesson!
+  filterLessons(order: QueryOrder = DESC, after: String, first: Int = 10, courseId: Int!): PaginatedLessons!
+  resourcesByLesson(lessonId: Int!): [LessonResource!]!
+  resourceById(lessonId: Int!, resourceId: Int!): LessonResource!
+}
+
+enum QueryCursor {
+  DATE
+  ALPHA
+}
+
+type Mutation {
+  createCourse(input: CreateCourseInput!): Course!
+  updateCourseName(courseId: Int!, name: String!): Course!
+  updateCourseDescription(courseId: Int!, description: String!): Course!
+  updateCoursePicture(courseId: Int!, picture: Upload!): Course!
+  updateCourseType(courseId: Int!, courseType: CourseType!): Course!
+  deleteCourse(courseId: Int!): Message!
+  createCourseProfile(input: CreateCourseProfileInput!): CourseProfile!
+  updateCourseProfileStatus(profileId: Int!, courseId: Int!, status: ProfileStatus!): CourseProfile!
+  deleteCourseProfile(courseId: Int!, profileId: Int!): Message!
+  createLesson(input: CreateLessonInput!): Lesson!
+  updateLessonLink(lessonId: Int!, courseId: Int!, link: String!): Lesson!
+  updateLessonTime(lessonId: Int!, courseId: Int!, time: String!): Lesson!
+  updateLessonTitle(lessonId: Int!, courseId: Int!, title: String!): Lesson!
+  updateLessonType(lessonId: Int!, courseId: Int!, lessonType: LessonType!, link: String): Lesson!
+  deleteLesson(courseId: Int!, lessonId: Int!): Message!
+  createResource(input: CreateResourceInput!): LessonResource!
+  updateResourceFile(resourceId: Int!, lessonId: Int!, file: Upload!): LessonResource!
+  updateResourceInfo(resourceId: Int!, lessonId: Int!, info: String!): LessonResource!
+  updateResourceTitle(resourceId: Int!, lessonId: Int!, title: String!): LessonResource!
+  deleteResource(lessonId: Int!, resourceId: Int!): Message!
+}
+
+input CreateCourseInput {
+  institutionId: Int!
+  name: String!
+  courseType: CourseType!
+  description: String
+  picture: Upload
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input CreateCourseProfileInput {
+  courseId: Int!
+  profileId: Int!
+  role: ProfileRole!
+  status: ProfileStatus!
+}
+
+input CreateLessonInput {
+  courseId: Int!
+  title: String!
+  lessonType: LessonType!
+  time: String!
+  link: String
+}
+
+input CreateResourceInput {
+  lessonId: Int!
+  title: String!
+  info: String
+  file: Upload!
+}
+
+scalar link__Import

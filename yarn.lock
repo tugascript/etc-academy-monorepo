@@ -5,6 +5,13 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@2toad/profanity@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@2toad/profanity@npm:2.1.0"
+  checksum: 641155e3f8883eea5e391f510cf2868174104ad34f7261147f9b99de37c274b98f818a4a9e4ffe78fbe37d911ac66706ce78be95df4ab07113a4ca75092d9ea6
+  languageName: node
+  linkType: hard
+
 "@ampproject/remapping@npm:^2.1.0":
   version: 2.2.0
   resolution: "@ampproject/remapping@npm:2.2.0"
@@ -96,6 +103,150 @@ __metadata:
   checksum: 11657e0eb6c121ee690280cb16a75fba18a341b150098f78e54785838dac84849b0527b9e4c11e9910d9d208d68989cb03e7e64b32088a2445df44d390db1592
   languageName: node
   linkType: hard
+
+"@app/common@workspace:libs/common":
+  version: 0.0.0-use.local
+  resolution: "@app/common@workspace:libs/common"
+  dependencies:
+    "@2toad/profanity": ^2.1.0
+    "@aws-sdk/client-s3": ^3.135.0
+    "@aws-sdk/signature-v4-crt": ^3.130.0
+    "@faker-js/faker": ^7.3.0
+    "@mikro-orm/cli": ^5.2.3
+    "@mikro-orm/core": ^5.2.3
+    "@mikro-orm/postgresql": ^5.2.3
+    "@mikro-orm/sqlite": ^5.2.3
+    "@nestjs/cli": ^9.0.0
+    "@nestjs/common": ^9.0.5
+    "@nestjs/config": ^2.2.0
+    "@nestjs/core": ^9.0.5
+    "@nestjs/graphql": ^10.0.21
+    "@nestjs/mercurius": ^10.0.21
+    "@nestjs/platform-fastify": ^9.0.5
+    "@nestjs/schematics": ^9.0.1
+    "@nestjs/testing": ^9.0.5
+    "@types/bcrypt": ^5.0.0
+    "@types/cache-manager": ^4.0.1
+    "@types/graphql-upload": ^8.0.11
+    "@types/jest": 28.1.6
+    "@types/jsonwebtoken": ^8.5.8
+    "@types/node": ^18.0.6
+    "@types/supertest": ^2.0.12
+    "@types/uuid": ^8.3.4
+    "@typescript-eslint/eslint-plugin": ^5.30.7
+    "@typescript-eslint/parser": ^5.30.7
+    add: ^2.0.6
+    cache-manager: ^4.1.0
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
+    dayjs: ^1.11.4
+    eslint: ^8.20.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    fastify: ^4.3.0
+    graphql: ^16.5.0
+    handlebars: ^4.7.7
+    ioredis: ^5.2.1
+    jest: ^28.1.3
+    joi: ^17.6.0
+    jsonwebtoken: ^8.5.1
+    mercurius: ^10.1.0
+    prettier: ^2.7.1
+    reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
+    rxjs: ^7.5.6
+    slugify: ^1.6.5
+    source-map-support: ^0.5.21
+    supertest: ^6.2.4
+    ts-jest: ^28.0.7
+    ts-loader: ^9.3.1
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.0.0
+    typescript: ^4.7.4
+    uuid: ^8.3.2
+    webpack: ^5.73.0
+  languageName: unknown
+  linkType: soft
+
+"@app/uploader@workspace:libs/uploader":
+  version: 0.0.0-use.local
+  resolution: "@app/uploader@workspace:libs/uploader"
+  dependencies:
+    "@2toad/profanity": ^2.1.0
+    "@aws-sdk/client-s3": ^3.135.0
+    "@aws-sdk/signature-v4-crt": ^3.130.0
+    "@faker-js/faker": ^7.3.0
+    "@fastify/cookie": ^7.3.0
+    "@fastify/cors": ^8.0.0
+    "@fastify/csrf-protection": ^5.1.0
+    "@fastify/static": ^6.4.0
+    "@mikro-orm/cli": ^5.2.3
+    "@mikro-orm/core": ^5.2.3
+    "@mikro-orm/nestjs": ^5.1.0
+    "@mikro-orm/postgresql": ^5.2.3
+    "@mikro-orm/sqlite": ^5.2.3
+    "@nestjs/cli": ^9.0.0
+    "@nestjs/common": ^9.0.5
+    "@nestjs/config": ^2.2.0
+    "@nestjs/core": ^9.0.5
+    "@nestjs/graphql": ^10.0.21
+    "@nestjs/mercurius": ^10.0.21
+    "@nestjs/platform-fastify": ^9.0.5
+    "@nestjs/schematics": ^9.0.1
+    "@nestjs/testing": ^9.0.5
+    "@nestjs/throttler": ^3.0.0
+    "@types/bcrypt": ^5.0.0
+    "@types/cache-manager": ^4.0.1
+    "@types/graphql-upload": ^8.0.11
+    "@types/jest": 28.1.6
+    "@types/jsonwebtoken": ^8.5.8
+    "@types/node": ^18.0.6
+    "@types/nodemailer": ^6.4.4
+    "@types/sharp": ^0.30.4
+    "@types/supertest": ^2.0.12
+    "@types/uuid": ^8.3.4
+    "@typescript-eslint/eslint-plugin": ^5.30.7
+    "@typescript-eslint/parser": ^5.30.7
+    add: ^2.0.6
+    altair-fastify-plugin: 4.5.3
+    bcrypt: ^5.0.1
+    cache-manager: ^4.1.0
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
+    dayjs: ^1.11.4
+    eslint: ^8.20.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    fastify: ^4.3.0
+    graphql: ^16.5.0
+    handlebars: ^4.7.7
+    ioredis: ^5.2.1
+    jest: ^28.1.3
+    joi: ^17.6.0
+    jsonwebtoken: ^8.5.1
+    mercurius: ^10.1.0
+    mercurius-cache: ^2.0.0
+    mercurius-upload: ^5.0.0
+    mqemitter-redis: ^5.0.0
+    nestjs-throttler-storage-redis: ^0.1.20
+    nodemailer: ^6.7.7
+    prettier: ^2.7.1
+    reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
+    rxjs: ^7.5.6
+    sharp: ^0.30.7
+    slugify: ^1.6.5
+    source-map-support: ^0.5.21
+    supertest: ^6.2.4
+    ts-jest: ^28.0.7
+    ts-loader: ^9.3.1
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.0.0
+    typescript: ^4.7.4
+    uuid: ^8.3.2
+    webpack: ^5.73.0
+  languageName: unknown
+  linkType: soft
 
 "@aws-crypto/crc32@npm:2.0.0":
   version: 2.0.0
@@ -229,7 +380,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws-sdk/client-s3@npm:^3.142.0":
+"@aws-sdk/client-s3@npm:^3.135.0, @aws-sdk/client-s3@npm:^3.142.0":
   version: 3.142.0
   resolution: "@aws-sdk/client-s3@npm:3.142.0"
   dependencies:
@@ -1216,13 +1367,13 @@ __metadata:
   linkType: hard
 
 "@babel/generator@npm:^7.18.10, @babel/generator@npm:^7.7.2":
-  version: 7.18.10
-  resolution: "@babel/generator@npm:7.18.10"
+  version: 7.18.12
+  resolution: "@babel/generator@npm:7.18.12"
   dependencies:
     "@babel/types": ^7.18.10
     "@jridgewell/gen-mapping": ^0.3.2
     jsesc: ^2.5.1
-  checksum: 6e888448dd018571e2a36859c1722dc389e22abac99180523422112d208b9eff137da57f03325c9b1e78c2e8b9b4e7004c9a880cc04643582177b9252dd1435f
+  checksum: 07dd71d255144bb703a80ab0156c35d64172ce81ddfb70ff24e2be687b052080233840c9a28d92fa2c33f7ecb8a8b30aef03b807518afc53b74c7908bf8859b1
   languageName: node
   linkType: hard
 
@@ -1625,7 +1776,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fastify/cookie@npm:^7.3.1":
+"@fastify/cookie@npm:^7.3.0, @fastify/cookie@npm:^7.3.1":
   version: 7.3.1
   resolution: "@fastify/cookie@npm:7.3.1"
   dependencies:
@@ -1646,7 +1797,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fastify/cors@npm:^8.1.0":
+"@fastify/cors@npm:^8.0.0, @fastify/cors@npm:^8.1.0":
   version: 8.1.0
   resolution: "@fastify/cors@npm:8.1.0"
   dependencies:
@@ -2208,7 +2359,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mikro-orm/cli@npm:^5.3.1":
+"@mikro-orm/cli@npm:^5.2.3, @mikro-orm/cli@npm:^5.3.1":
   version: 5.3.1
   resolution: "@mikro-orm/cli@npm:5.3.1"
   dependencies:
@@ -2256,7 +2407,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mikro-orm/core@npm:^5.3.1":
+"@mikro-orm/core@npm:^5.2.3, @mikro-orm/core@npm:^5.3.1":
   version: 5.3.1
   resolution: "@mikro-orm/core@npm:5.3.1"
   dependencies:
@@ -2358,7 +2509,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mikro-orm/postgresql@npm:^5.3.1":
+"@mikro-orm/postgresql@npm:^5.2.3, @mikro-orm/postgresql@npm:^5.3.1":
   version: 5.3.1
   resolution: "@mikro-orm/postgresql@npm:5.3.1"
   dependencies:
@@ -2380,7 +2531,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mikro-orm/sqlite@npm:^5.3.1":
+"@mikro-orm/sqlite@npm:^5.2.3, @mikro-orm/sqlite@npm:^5.3.1":
   version: 5.3.1
   resolution: "@mikro-orm/sqlite@npm:5.3.1"
   dependencies:
@@ -2473,7 +2624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/common@npm:^9.0.8":
+"@nestjs/common@npm:^9.0.5, @nestjs/common@npm:^9.0.8":
   version: 9.0.8
   resolution: "@nestjs/common@npm:9.0.8"
   dependencies:
@@ -2513,7 +2664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/core@npm:^9.0.8":
+"@nestjs/core@npm:^9.0.5, @nestjs/core@npm:^9.0.8":
   version: 9.0.8
   resolution: "@nestjs/core@npm:9.0.8"
   dependencies:
@@ -2651,7 +2802,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/platform-fastify@npm:^9.0.8":
+"@nestjs/platform-fastify@npm:^9.0.5, @nestjs/platform-fastify@npm:^9.0.8":
   version: 9.0.8
   resolution: "@nestjs/platform-fastify@npm:9.0.8"
   dependencies:
@@ -2691,7 +2842,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/testing@npm:^9.0.8":
+"@nestjs/testing@npm:^9.0.5, @nestjs/testing@npm:^9.0.8":
   version: 9.0.8
   resolution: "@nestjs/testing@npm:9.0.8"
   dependencies:
@@ -3235,14 +3386,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^18.6.4":
+"@types/node@npm:*, @types/node@npm:^18.0.6, @types/node@npm:^18.6.4":
   version: 18.6.4
   resolution: "@types/node@npm:18.6.4"
   checksum: fc453dd2b541f5812ba1a8f957f577727cf2d8aee886f1d5c03eb153b2b3373d2e0953c5bd2b7a5b184073bc317f54ec91f1ec4830a58eda4a833e90654021de
   languageName: node
   linkType: hard
 
-"@types/nodemailer@npm:^6.4.5":
+"@types/nodemailer@npm:^6.4.4, @types/nodemailer@npm:^6.4.5":
   version: 6.4.5
   resolution: "@types/nodemailer@npm:6.4.5"
   dependencies:
@@ -3370,7 +3521,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.32.0":
+"@typescript-eslint/eslint-plugin@npm:^5.30.7, @typescript-eslint/eslint-plugin@npm:^5.32.0":
   version: 5.32.0
   resolution: "@typescript-eslint/eslint-plugin@npm:5.32.0"
   dependencies:
@@ -3393,7 +3544,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.32.0":
+"@typescript-eslint/parser@npm:^5.30.7, @typescript-eslint/parser@npm:^5.32.0":
   version: 5.32.0
   resolution: "@typescript-eslint/parser@npm:5.32.0"
   dependencies:
@@ -3652,6 +3803,488 @@ __metadata:
   languageName: node
   linkType: hard
 
+"Auth@workspace:apps/auth":
+  version: 0.0.0-use.local
+  resolution: "Auth@workspace:apps/auth"
+  dependencies:
+    "@2toad/profanity": ^2.1.0
+    "@aws-sdk/client-s3": ^3.135.0
+    "@aws-sdk/signature-v4-crt": ^3.130.0
+    "@faker-js/faker": ^7.3.0
+    "@fastify/cookie": ^7.3.0
+    "@fastify/cors": ^8.0.0
+    "@fastify/csrf-protection": ^5.1.0
+    "@fastify/static": ^6.4.0
+    "@mikro-orm/cli": ^5.2.3
+    "@mikro-orm/core": ^5.2.3
+    "@mikro-orm/nestjs": ^5.1.0
+    "@mikro-orm/postgresql": ^5.2.3
+    "@mikro-orm/sqlite": ^5.2.3
+    "@nestjs/cli": ^9.0.0
+    "@nestjs/common": ^9.0.5
+    "@nestjs/config": ^2.2.0
+    "@nestjs/core": ^9.0.5
+    "@nestjs/graphql": ^10.0.21
+    "@nestjs/mercurius": ^10.0.21
+    "@nestjs/platform-fastify": ^9.0.5
+    "@nestjs/schematics": ^9.0.1
+    "@nestjs/testing": ^9.0.5
+    "@nestjs/throttler": ^3.0.0
+    "@types/bcrypt": ^5.0.0
+    "@types/cache-manager": ^4.0.1
+    "@types/graphql-upload": ^8.0.11
+    "@types/jest": 28.1.6
+    "@types/jsonwebtoken": ^8.5.8
+    "@types/node": ^18.0.6
+    "@types/nodemailer": ^6.4.4
+    "@types/sharp": ^0.30.4
+    "@types/supertest": ^2.0.12
+    "@types/uuid": ^8.3.4
+    "@typescript-eslint/eslint-plugin": ^5.30.7
+    "@typescript-eslint/parser": ^5.30.7
+    add: ^2.0.6
+    altair-fastify-plugin: 4.5.3
+    bcrypt: ^5.0.1
+    cache-manager: ^4.1.0
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
+    dayjs: ^1.11.4
+    eslint: ^8.20.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    fastify: ^4.3.0
+    graphql: ^16.5.0
+    handlebars: ^4.7.7
+    ioredis: ^5.2.1
+    jest: ^28.1.3
+    joi: ^17.6.0
+    jsonwebtoken: ^8.5.1
+    mercurius: ^10.1.0
+    mercurius-cache: ^2.0.0
+    mercurius-upload: ^5.0.0
+    mqemitter-redis: ^5.0.0
+    nestjs-throttler-storage-redis: ^0.1.20
+    nodemailer: ^6.7.7
+    prettier: ^2.7.1
+    reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
+    rxjs: ^7.5.6
+    sharp: ^0.30.7
+    slugify: ^1.6.5
+    source-map-support: ^0.5.21
+    supertest: ^6.2.4
+    ts-jest: ^28.0.7
+    ts-loader: ^9.3.1
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.0.0
+    typescript: ^4.7.4
+    uuid: ^8.3.2
+    webpack: ^5.73.0
+  languageName: unknown
+  linkType: soft
+
+"Courses@workspace:apps/courses":
+  version: 0.0.0-use.local
+  resolution: "Courses@workspace:apps/courses"
+  dependencies:
+    "@2toad/profanity": ^2.1.0
+    "@aws-sdk/client-s3": ^3.135.0
+    "@aws-sdk/signature-v4-crt": ^3.130.0
+    "@faker-js/faker": ^7.3.0
+    "@fastify/cookie": ^7.3.0
+    "@fastify/cors": ^8.0.0
+    "@fastify/csrf-protection": ^5.1.0
+    "@fastify/static": ^6.4.0
+    "@mikro-orm/cli": ^5.2.3
+    "@mikro-orm/core": ^5.2.3
+    "@mikro-orm/nestjs": ^5.1.0
+    "@mikro-orm/postgresql": ^5.2.3
+    "@mikro-orm/sqlite": ^5.2.3
+    "@nestjs/cli": ^9.0.0
+    "@nestjs/common": ^9.0.5
+    "@nestjs/config": ^2.2.0
+    "@nestjs/core": ^9.0.5
+    "@nestjs/graphql": ^10.0.21
+    "@nestjs/mercurius": ^10.0.21
+    "@nestjs/platform-fastify": ^9.0.5
+    "@nestjs/schematics": ^9.0.1
+    "@nestjs/testing": ^9.0.5
+    "@nestjs/throttler": ^3.0.0
+    "@types/bcrypt": ^5.0.0
+    "@types/cache-manager": ^4.0.1
+    "@types/graphql-upload": ^8.0.11
+    "@types/jest": 28.1.6
+    "@types/jsonwebtoken": ^8.5.8
+    "@types/node": ^18.0.6
+    "@types/nodemailer": ^6.4.4
+    "@types/sharp": ^0.30.4
+    "@types/supertest": ^2.0.12
+    "@types/uuid": ^8.3.4
+    "@typescript-eslint/eslint-plugin": ^5.30.7
+    "@typescript-eslint/parser": ^5.30.7
+    add: ^2.0.6
+    altair-fastify-plugin: 4.5.3
+    bcrypt: ^5.0.1
+    cache-manager: ^4.1.0
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
+    dayjs: ^1.11.4
+    eslint: ^8.20.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    fastify: ^4.3.0
+    graphql: ^16.5.0
+    handlebars: ^4.7.7
+    ioredis: ^5.2.1
+    jest: ^28.1.3
+    joi: ^17.6.0
+    jsonwebtoken: ^8.5.1
+    mercurius: ^10.1.0
+    mercurius-cache: ^2.0.0
+    mercurius-upload: ^5.0.0
+    mqemitter-redis: ^5.0.0
+    nestjs-throttler-storage-redis: ^0.1.20
+    nodemailer: ^6.7.7
+    prettier: ^2.7.1
+    reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
+    rxjs: ^7.5.6
+    sharp: ^0.30.7
+    slugify: ^1.6.5
+    source-map-support: ^0.5.21
+    supertest: ^6.2.4
+    ts-jest: ^28.0.7
+    ts-loader: ^9.3.1
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.0.0
+    typescript: ^4.7.4
+    uuid: ^8.3.2
+    webpack: ^5.73.0
+  languageName: unknown
+  linkType: soft
+
+"Etc-Academy@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "Etc-Academy@workspace:."
+  dependencies:
+    "@apollo/subgraph": ^2.0.5
+    "@aws-sdk/client-s3": ^3.142.0
+    "@aws-sdk/signature-v4-crt": ^3.130.0
+    "@faker-js/faker": ^7.3.0
+    "@fastify/cookie": ^7.3.1
+    "@fastify/cors": ^8.1.0
+    "@fastify/csrf-protection": ^5.1.0
+    "@fastify/static": ^6.5.0
+    "@mikro-orm/cli": ^5.3.1
+    "@mikro-orm/core": ^5.3.1
+    "@mikro-orm/nestjs": ^5.1.0
+    "@mikro-orm/postgresql": ^5.3.1
+    "@mikro-orm/sqlite": ^5.3.1
+    "@nestjs-modules/mailer": ^1.8.1
+    "@nestjs/cli": ^9.0.0
+    "@nestjs/common": ^9.0.8
+    "@nestjs/config": ^2.2.0
+    "@nestjs/core": ^9.0.8
+    "@nestjs/graphql": ^10.0.21
+    "@nestjs/mercurius": ^10.0.21
+    "@nestjs/microservices": ^9.0.8
+    "@nestjs/platform-fastify": ^9.0.8
+    "@nestjs/schematics": ^9.0.1
+    "@nestjs/testing": ^9.0.8
+    "@nestjs/throttler": ^3.0.0
+    "@types/bcrypt": ^5.0.0
+    "@types/cache-manager": ^4.0.1
+    "@types/graphql-upload": ^8.0.11
+    "@types/jest": 28.1.6
+    "@types/jsonwebtoken": ^8.5.8
+    "@types/node": ^18.6.4
+    "@types/nodemailer": ^6.4.5
+    "@types/sharp": ^0.30.4
+    "@types/supertest": ^2.0.12
+    "@types/uuid": ^8.3.4
+    "@typescript-eslint/eslint-plugin": ^5.32.0
+    "@typescript-eslint/parser": ^5.32.0
+    add: ^2.0.6
+    altair-fastify-plugin: ^4.5.3
+    bcrypt: ^5.0.1
+    cache-manager: ^4.1.0
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
+    dayjs: ^1.11.4
+    eslint: ^8.21.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    fastify: ^4.3.0
+    graphql: ^16.5.0
+    handlebars: ^4.7.7
+    ioredis: ^5.2.2
+    jest: ^28.1.3
+    joi: ^17.6.0
+    jsonwebtoken: ^8.5.1
+    mercurius: ^10.1.0
+    mercurius-cache: ^2.0.0
+    mercurius-upload: ^5.0.0
+    mqemitter-redis: ^5.0.0
+    nestjs-throttler-storage-redis: ^0.1.20
+    nodemailer: ^6.7.7
+    prettier: ^2.7.1
+    reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
+    rxjs: ^7.5.6
+    sharp: ^0.30.7
+    slugify: ^1.6.5
+    source-map-support: ^0.5.21
+    supertest: ^6.2.4
+    ts-jest: ^28.0.7
+    ts-loader: ^9.3.1
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.0.0
+    typescript: ^4.7.4
+    uuid: ^8.3.2
+    webpack: ^5.74.0
+  languageName: unknown
+  linkType: soft
+
+"Frontend@workspace:apps/frontend":
+  version: 0.0.0-use.local
+  resolution: "Frontend@workspace:apps/frontend"
+  dependencies:
+    "@2toad/profanity": ^2.1.0
+    "@aws-sdk/client-s3": ^3.135.0
+    "@aws-sdk/signature-v4-crt": ^3.130.0
+    "@faker-js/faker": ^7.3.0
+    "@fastify/cookie": ^7.3.0
+    "@fastify/cors": ^8.0.0
+    "@fastify/csrf-protection": ^5.1.0
+    "@fastify/static": ^6.4.0
+    "@mikro-orm/cli": ^5.2.3
+    "@mikro-orm/core": ^5.2.3
+    "@mikro-orm/nestjs": ^5.1.0
+    "@mikro-orm/postgresql": ^5.2.3
+    "@mikro-orm/sqlite": ^5.2.3
+    "@nestjs/cli": ^9.0.0
+    "@nestjs/common": ^9.0.5
+    "@nestjs/config": ^2.2.0
+    "@nestjs/core": ^9.0.5
+    "@nestjs/graphql": ^10.0.21
+    "@nestjs/mercurius": ^10.0.21
+    "@nestjs/platform-fastify": ^9.0.5
+    "@nestjs/schematics": ^9.0.1
+    "@nestjs/testing": ^9.0.5
+    "@nestjs/throttler": ^3.0.0
+    "@types/bcrypt": ^5.0.0
+    "@types/cache-manager": ^4.0.1
+    "@types/graphql-upload": ^8.0.11
+    "@types/jest": 28.1.6
+    "@types/jsonwebtoken": ^8.5.8
+    "@types/node": ^18.0.6
+    "@types/nodemailer": ^6.4.4
+    "@types/sharp": ^0.30.4
+    "@types/supertest": ^2.0.12
+    "@types/uuid": ^8.3.4
+    "@typescript-eslint/eslint-plugin": ^5.30.7
+    "@typescript-eslint/parser": ^5.30.7
+    add: ^2.0.6
+    altair-fastify-plugin: 4.5.3
+    bcrypt: ^5.0.1
+    cache-manager: ^4.1.0
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
+    dayjs: ^1.11.4
+    eslint: ^8.20.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    fastify: ^4.3.0
+    graphql: ^16.5.0
+    handlebars: ^4.7.7
+    ioredis: ^5.2.1
+    jest: ^28.1.3
+    joi: ^17.6.0
+    jsonwebtoken: ^8.5.1
+    mercurius: ^10.1.0
+    mercurius-cache: ^2.0.0
+    mercurius-upload: ^5.0.0
+    mqemitter-redis: ^5.0.0
+    nestjs-throttler-storage-redis: ^0.1.20
+    nodemailer: ^6.7.7
+    prettier: ^2.7.1
+    reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
+    rxjs: ^7.5.6
+    sharp: ^0.30.7
+    slugify: ^1.6.5
+    source-map-support: ^0.5.21
+    supertest: ^6.2.4
+    ts-jest: ^28.0.7
+    ts-loader: ^9.3.1
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.0.0
+    typescript: ^4.7.4
+    uuid: ^8.3.2
+    webpack: ^5.73.0
+  languageName: unknown
+  linkType: soft
+
+"Gateway@workspace:apps/gateway":
+  version: 0.0.0-use.local
+  resolution: "Gateway@workspace:apps/gateway"
+  dependencies:
+    "@2toad/profanity": ^2.1.0
+    "@aws-sdk/client-s3": ^3.135.0
+    "@aws-sdk/signature-v4-crt": ^3.130.0
+    "@faker-js/faker": ^7.3.0
+    "@fastify/cookie": ^7.3.0
+    "@fastify/cors": ^8.0.0
+    "@fastify/csrf-protection": ^5.1.0
+    "@fastify/static": ^6.4.0
+    "@mikro-orm/cli": ^5.2.3
+    "@mikro-orm/core": ^5.2.3
+    "@mikro-orm/nestjs": ^5.1.0
+    "@mikro-orm/postgresql": ^5.2.3
+    "@mikro-orm/sqlite": ^5.2.3
+    "@nestjs/cli": ^9.0.0
+    "@nestjs/common": ^9.0.5
+    "@nestjs/config": ^2.2.0
+    "@nestjs/core": ^9.0.5
+    "@nestjs/graphql": ^10.0.21
+    "@nestjs/mercurius": ^10.0.21
+    "@nestjs/platform-fastify": ^9.0.5
+    "@nestjs/schematics": ^9.0.1
+    "@nestjs/testing": ^9.0.5
+    "@nestjs/throttler": ^3.0.0
+    "@types/bcrypt": ^5.0.0
+    "@types/cache-manager": ^4.0.1
+    "@types/graphql-upload": ^8.0.11
+    "@types/jest": 28.1.6
+    "@types/jsonwebtoken": ^8.5.8
+    "@types/node": ^18.0.6
+    "@types/nodemailer": ^6.4.4
+    "@types/sharp": ^0.30.4
+    "@types/supertest": ^2.0.12
+    "@types/uuid": ^8.3.4
+    "@typescript-eslint/eslint-plugin": ^5.30.7
+    "@typescript-eslint/parser": ^5.30.7
+    add: ^2.0.6
+    altair-fastify-plugin: 4.5.3
+    bcrypt: ^5.0.1
+    cache-manager: ^4.1.0
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
+    dayjs: ^1.11.4
+    eslint: ^8.20.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    fastify: ^4.3.0
+    graphql: ^16.5.0
+    handlebars: ^4.7.7
+    ioredis: ^5.2.1
+    jest: ^28.1.3
+    joi: ^17.6.0
+    jsonwebtoken: ^8.5.1
+    mercurius: ^10.1.0
+    mercurius-cache: ^2.0.0
+    mercurius-upload: ^5.0.0
+    mqemitter-redis: ^5.0.0
+    nestjs-throttler-storage-redis: ^0.1.20
+    nodemailer: ^6.7.7
+    prettier: ^2.7.1
+    reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
+    rxjs: ^7.5.6
+    sharp: ^0.30.7
+    slugify: ^1.6.5
+    source-map-support: ^0.5.21
+    supertest: ^6.2.4
+    ts-jest: ^28.0.7
+    ts-loader: ^9.3.1
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.0.0
+    typescript: ^4.7.4
+    uuid: ^8.3.2
+    webpack: ^5.73.0
+  languageName: unknown
+  linkType: soft
+
+"Users@workspace:apps/users":
+  version: 0.0.0-use.local
+  resolution: "Users@workspace:apps/users"
+  dependencies:
+    "@2toad/profanity": ^2.1.0
+    "@aws-sdk/client-s3": ^3.135.0
+    "@aws-sdk/signature-v4-crt": ^3.130.0
+    "@faker-js/faker": ^7.3.0
+    "@fastify/cookie": ^7.3.0
+    "@fastify/cors": ^8.0.0
+    "@fastify/csrf-protection": ^5.1.0
+    "@fastify/static": ^6.4.0
+    "@mikro-orm/cli": ^5.2.3
+    "@mikro-orm/core": ^5.2.3
+    "@mikro-orm/nestjs": ^5.1.0
+    "@mikro-orm/postgresql": ^5.2.3
+    "@mikro-orm/sqlite": ^5.2.3
+    "@nestjs/cli": ^9.0.0
+    "@nestjs/common": ^9.0.5
+    "@nestjs/config": ^2.2.0
+    "@nestjs/core": ^9.0.5
+    "@nestjs/graphql": ^10.0.21
+    "@nestjs/mercurius": ^10.0.21
+    "@nestjs/platform-fastify": ^9.0.5
+    "@nestjs/schematics": ^9.0.1
+    "@nestjs/testing": ^9.0.5
+    "@nestjs/throttler": ^3.0.0
+    "@types/bcrypt": ^5.0.0
+    "@types/cache-manager": ^4.0.1
+    "@types/graphql-upload": ^8.0.11
+    "@types/jest": 28.1.6
+    "@types/jsonwebtoken": ^8.5.8
+    "@types/node": ^18.0.6
+    "@types/nodemailer": ^6.4.4
+    "@types/sharp": ^0.30.4
+    "@types/supertest": ^2.0.12
+    "@types/uuid": ^8.3.4
+    "@typescript-eslint/eslint-plugin": ^5.30.7
+    "@typescript-eslint/parser": ^5.30.7
+    add: ^2.0.6
+    altair-fastify-plugin: 4.5.3
+    bcrypt: ^5.0.1
+    cache-manager: ^4.1.0
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
+    dayjs: ^1.11.4
+    eslint: ^8.20.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-prettier: ^4.2.1
+    fastify: ^4.3.0
+    graphql: ^16.5.0
+    handlebars: ^4.7.7
+    ioredis: ^5.2.1
+    jest: ^28.1.3
+    joi: ^17.6.0
+    jsonwebtoken: ^8.5.1
+    mercurius: ^10.1.0
+    mercurius-cache: ^2.0.0
+    mercurius-upload: ^5.0.0
+    mqemitter-redis: ^5.0.0
+    nestjs-throttler-storage-redis: ^0.1.20
+    nodemailer: ^6.7.7
+    prettier: ^2.7.1
+    reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
+    rxjs: ^7.5.6
+    sharp: ^0.30.7
+    slugify: ^1.6.5
+    source-map-support: ^0.5.21
+    supertest: ^6.2.4
+    ts-jest: ^28.0.7
+    ts-loader: ^9.3.1
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.0.0
+    typescript: ^4.7.4
+    uuid: ^8.3.2
+    webpack: ^5.73.0
+  languageName: unknown
+  linkType: soft
+
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -3802,7 +4435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"altair-fastify-plugin@npm:^4.5.3":
+"altair-fastify-plugin@npm:4.5.3, altair-fastify-plugin@npm:^4.5.3":
   version: 4.5.3
   resolution: "altair-fastify-plugin@npm:4.5.3"
   dependencies:
@@ -4144,88 +4777,6 @@ __metadata:
   checksum: 6fe7ee3889343a6602f665c28ea135956a0767d7f7ca5fc1d72c5243e2f6e9d8a64f51254bf2fd0cce47b79fceeccf7a357f37cfa755a509dfb930a21151837c
   languageName: node
   linkType: hard
-
-"backend@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "backend@workspace:."
-  dependencies:
-    "@apollo/subgraph": ^2.0.5
-    "@aws-sdk/client-s3": ^3.142.0
-    "@aws-sdk/signature-v4-crt": ^3.130.0
-    "@faker-js/faker": ^7.3.0
-    "@fastify/cookie": ^7.3.1
-    "@fastify/cors": ^8.1.0
-    "@fastify/csrf-protection": ^5.1.0
-    "@fastify/static": ^6.5.0
-    "@mikro-orm/cli": ^5.3.1
-    "@mikro-orm/core": ^5.3.1
-    "@mikro-orm/nestjs": ^5.1.0
-    "@mikro-orm/postgresql": ^5.3.1
-    "@mikro-orm/sqlite": ^5.3.1
-    "@nestjs-modules/mailer": ^1.8.1
-    "@nestjs/cli": ^9.0.0
-    "@nestjs/common": ^9.0.8
-    "@nestjs/config": ^2.2.0
-    "@nestjs/core": ^9.0.8
-    "@nestjs/graphql": ^10.0.21
-    "@nestjs/mercurius": ^10.0.21
-    "@nestjs/microservices": ^9.0.8
-    "@nestjs/platform-fastify": ^9.0.8
-    "@nestjs/schematics": ^9.0.1
-    "@nestjs/testing": ^9.0.8
-    "@nestjs/throttler": ^3.0.0
-    "@types/bcrypt": ^5.0.0
-    "@types/cache-manager": ^4.0.1
-    "@types/graphql-upload": ^8.0.11
-    "@types/jest": 28.1.6
-    "@types/jsonwebtoken": ^8.5.8
-    "@types/node": ^18.6.4
-    "@types/nodemailer": ^6.4.5
-    "@types/sharp": ^0.30.4
-    "@types/supertest": ^2.0.12
-    "@types/uuid": ^8.3.4
-    "@typescript-eslint/eslint-plugin": ^5.32.0
-    "@typescript-eslint/parser": ^5.32.0
-    add: ^2.0.6
-    altair-fastify-plugin: ^4.5.3
-    bcrypt: ^5.0.1
-    cache-manager: ^4.1.0
-    class-transformer: ^0.5.1
-    class-validator: ^0.13.2
-    dayjs: ^1.11.4
-    eslint: ^8.21.0
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-prettier: ^4.2.1
-    fastify: ^4.3.0
-    graphql: ^16.5.0
-    handlebars: ^4.7.7
-    ioredis: ^5.2.2
-    jest: ^28.1.3
-    joi: ^17.6.0
-    jsonwebtoken: ^8.5.1
-    mercurius: ^10.1.0
-    mercurius-cache: ^2.0.0
-    mercurius-upload: ^5.0.0
-    mqemitter-redis: ^5.0.0
-    nestjs-throttler-storage-redis: ^0.1.20
-    nodemailer: ^6.7.7
-    prettier: ^2.7.1
-    reflect-metadata: ^0.1.13
-    rimraf: ^3.0.2
-    rxjs: ^7.5.6
-    sharp: ^0.30.7
-    slugify: ^1.6.5
-    source-map-support: ^0.5.21
-    supertest: ^6.2.4
-    ts-jest: ^28.0.7
-    ts-loader: ^9.3.1
-    ts-node: ^10.9.1
-    tsconfig-paths: ^4.0.0
-    typescript: ^4.7.4
-    uuid: ^8.3.2
-    webpack: ^5.74.0
-  languageName: unknown
-  linkType: soft
 
 "backo2@npm:^1.0.2":
   version: 1.0.2
@@ -5756,7 +6307,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.21.0":
+"eslint@npm:^8.20.0, eslint@npm:^8.21.0":
   version: 8.21.0
   resolution: "eslint@npm:8.21.0"
   dependencies:
@@ -6110,9 +6661,9 @@ __metadata:
   linkType: hard
 
 "fastify-plugin@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "fastify-plugin@npm:4.0.0"
-  checksum: b929f94e70e3815643842cd50bdfecd26ca2c34ef7a31b1570bd3fe7437174858e9bc4dfa70c2984340d5450c24b830d37fe4789c103ef80565dcc9037ae987a
+  version: 4.1.0
+  resolution: "fastify-plugin@npm:4.1.0"
+  checksum: 98d4041c3dc51e1146d74cc76c68d8074d4fbedc8f1094de1f4e54fc9b4a7600e64431e3937be9412f25397b7d0a7ee66be55d2e6c292b67782a5f0c40bea970
   languageName: node
   linkType: hard
 
@@ -7198,7 +7749,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ioredis@npm:^5.0.4, ioredis@npm:^5.2.2":
+"ioredis@npm:^5.0.4, ioredis@npm:^5.2.1, ioredis@npm:^5.2.2":
   version: 5.2.2
   resolution: "ioredis@npm:5.2.2"
   dependencies:
@@ -8305,7 +8856,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"light-my-request@npm:5.3.0, light-my-request@npm:^5.0.0":
+"light-my-request@npm:5.3.0":
   version: 5.3.0
   resolution: "light-my-request@npm:5.3.0"
   dependencies:
@@ -8313,6 +8864,17 @@ __metadata:
     process-warning: ^2.0.0
     set-cookie-parser: ^2.4.1
   checksum: 10bd862c8f08534c1b276266bf4bbef5397a0b94047b127a94b946e777e804b6f99118cacb1f63cd1d9017624cabb2ede8497d957df6d8dd891cd6aad95b0031
+  languageName: node
+  linkType: hard
+
+"light-my-request@npm:^5.0.0":
+  version: 5.4.0
+  resolution: "light-my-request@npm:5.4.0"
+  dependencies:
+    cookie: ^0.5.0
+    process-warning: ^2.0.0
+    set-cookie-parser: ^2.4.1
+  checksum: cc87a63136668498fcbc84f094f950c427c7d2c0d3ecf5b97074c9992ff061b8f5f6ede3bbf2b86fa69730612345119509ca3bb2ea77b20986f9c252f2793559
   languageName: node
   linkType: hard
 
@@ -12118,7 +12680,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfig-paths@npm:4.0.0, tsconfig-paths@npm:^4.0.0":
+"tsconfig-paths@npm:4.0.0":
   version: 4.0.0
   resolution: "tsconfig-paths@npm:4.0.0"
   dependencies:
@@ -12126,6 +12688,17 @@ __metadata:
     minimist: ^1.2.6
     strip-bom: ^3.0.0
   checksum: a8cf746ffe438513a71c70c1bcdee8da7d62ab2af286efbe2728ff55c4d4c92c2aea80a0822982ded6d0a13c7686c24632934d7c0f4f564be9e1b2cdc3d65eea
+  languageName: node
+  linkType: hard
+
+"tsconfig-paths@npm:^4.0.0":
+  version: 4.1.0
+  resolution: "tsconfig-paths@npm:4.1.0"
+  dependencies:
+    json5: ^2.2.1
+    minimist: ^1.2.6
+    strip-bom: ^3.0.0
+  checksum: e4b101f81b2abd95499d8145e0aa73144e857c2c359191058486cef101b7accae22a69114e5d5814a13d5ab3b0bae70dd0c85bcdb7e829bbe1bfda5c9067c9b1
   languageName: node
   linkType: hard
 
@@ -12221,11 +12794,11 @@ __metadata:
 
 "typescript@patch:typescript@4.7.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
   version: 4.7.4
-  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=bda367"
+  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=f456af"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 96d3030cb01143570567cb4f3a616b10df65f658f0e74e853e77a089a6a954e35c800be7db8b9bfe9a1ae05d9c2897e281359f65e4caa1caf266368e1c4febd3
+  checksum: 9096d8f6c16cb80ef3bf96fcbbd055bf1c4a43bd14f3b7be45a9fbe7ada46ec977f604d5feed3263b4f2aa7d4c7477ce5f9cd87de0d6feedec69a983f3a4f93e
   languageName: node
   linkType: hard
 
@@ -12516,7 +13089,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.74.0":
+"webpack@npm:^5.73.0, webpack@npm:^5.74.0":
   version: 5.74.0
   resolution: "webpack@npm:5.74.0"
   dependencies:

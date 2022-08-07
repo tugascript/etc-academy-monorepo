@@ -1,0 +1,1 @@
+{"version":3,"file":"paginated-courses.type.js","sourceRoot":"","sources":["../../../../src/courses/entities/gql/paginated-courses.type.ts"],"names":[],"mappings":";;;;;;;;;AAAA,6CAA6C;AAC7C,sDAAyD;AACzD,oDAAgD;AAGhD,IAAsB,oBAAoB,GAA1C,MAAsB,oBAAqB,SAAQ,IAAA,eAAS,EAC1D,4BAAY,CACb;CAAG,CAAA;AAFkB,oBAAoB;IADzC,IAAA,oBAAU,EAAC,kBAAkB,CAAC;GACT,oBAAoB,CAEtC;AAFkB,oDAAoB"}

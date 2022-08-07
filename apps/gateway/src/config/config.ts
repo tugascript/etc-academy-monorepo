@@ -1,6 +1,6 @@
+import { redisUrlToOptions } from 'src/common/utils';
 import { LoadStrategy } from '@mikro-orm/core';
 import { IConfig } from './interfaces/config.interface';
-import { redisUrlToOptions } from 'app/common/utils';
 
 export function config(): IConfig {
   const testing = process.env.NODE_ENV !== 'production';
@@ -10,6 +10,10 @@ export function config(): IConfig {
       {
         name: 'users',
         url: process.env.USERS_URL,
+      },
+      {
+        name: 'courses',
+        url: process.env.COURSES_URL,
       },
     ],
     port: parseInt(process.env.PORT, 10),

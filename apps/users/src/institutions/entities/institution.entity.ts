@@ -1,5 +1,3 @@
-import { LocalBaseEntity } from '@app/common/entities';
-import { Field, ObjectType } from '@nestjs/graphql';
 import {
   Collection,
   Entity,
@@ -9,7 +7,7 @@ import {
   Property,
   Unique,
 } from '@mikro-orm/core';
-import { IInstitution } from '../interfaces/institution.interface';
+import { Field, ObjectType } from '@nestjs/graphql';
 import {
   IsEnum,
   IsOptional,
@@ -18,11 +16,13 @@ import {
   Length,
   Matches,
 } from 'class-validator';
-import { NAME_REGEX, SLUG_REGEX } from '@app/common/constants';
 import { AddressEntity } from '../../addresses/entities/address.entity';
+import { NAME_REGEX, SLUG_REGEX } from '../../common/constants';
+import { LocalBaseEntity } from '../../common/entities';
 import { ProfileEntity } from '../../profiles/entities/profile.entity';
 import { UserEntity } from '../../users/entities/user.entity';
 import { InstitutionTypeEnum } from '../enums/institution-type.enum';
+import { IInstitution } from '../interfaces/institution.interface';
 
 @ObjectType('Institution')
 @Entity({ tableName: 'institutions' })

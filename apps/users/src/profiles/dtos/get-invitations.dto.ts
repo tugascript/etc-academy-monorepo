@@ -1,5 +1,5 @@
+import { RequestStatusEnum } from 'src/common/enums';
 import { ArgsType, Field } from '@nestjs/graphql';
-import { RequestStatusEnum } from 'app/common/enums';
 import { IsEnum, IsIn } from 'class-validator';
 
 @ArgsType()

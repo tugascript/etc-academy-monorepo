@@ -1,5 +1,5 @@
+import { PASSWORD_REGEX } from 'src/common/constants';
 import { IsString, Length, Matches, MinLength } from 'class-validator';
-import { PASSWORD_REGEX } from 'app/common/constants';
 
 export abstract class PasswordsDto {
   @IsString()

@@ -1,3 +1,12 @@
+import { CommonService } from 'src/common';
+import { LocalMessageType } from 'src/common/entities/gql';
+import {
+  IAccessProfile,
+  IMessageProfile,
+  IMessageUser,
+  IRedisMessage,
+} from 'src/common/interfaces';
+import { generateToken, verifyToken } from 'src/common/utils';
 import {
   BadRequestException,
   CACHE_MANAGER,
@@ -6,19 +15,21 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { ClientProxy } from '@nestjs/microservices';
 import { compare, hash } from 'bcrypt';
 import { Cache } from 'cache-manager';
 import { FastifyReply, FastifyRequest } from 'fastify';
+import { firstValueFrom, timeout } from 'rxjs';
 import { v5 as uuidV5 } from 'uuid';
-
+import { IJwt, ISingleJwt } from '../config/interfaces/jwt.interface';
 import { EmailService } from '../email/email.service';
-import { ChangePasswordDto } from './dtos/update-password.dto';
 import { ConfirmEmailDto } from './dtos/confirm-email.dto';
 import { ConfirmLoginDto } from './dtos/confirm-login.dto';
 import { LoginDto } from './dtos/login.dto';
 import { RegisterDto } from './dtos/register.dto';
 import { ResetEmailDto } from './dtos/reset-email.dto';
 import { ResetPasswordDto } from './dtos/reset-password.dto';
+import { ChangePasswordDto } from './dtos/update-password.dto';
 import {
   IAccessPayload,
   IAccessPayloadResponse,
@@ -28,13 +39,6 @@ import {
   ITokenPayload,
   ITokenPayloadResponse,
 } from './interfaces/token-payload.interface';
-import { ClientProxy } from '@nestjs/microservices';
-import { IMessageUser, IRedisMessage } from '@app/common/interfaces';
-import { firstValueFrom, timeout } from 'rxjs';
-import { CommonService } from '@app/common';
-import { LocalMessageType } from '@app/common/entities/gql';
-import { IJwt, ISingleJwt } from '../config/interfaces/jwt.interface';
-import { generateToken, verifyToken } from '@app/common/utils';
 
 @Injectable()
 export class AuthService {
@@ -230,7 +234,7 @@ export class AuthService {
     }
 
     if (user) {
-      const resetToken = await this.generateAuthToken(
+      const resetToken = await this.generateAuthToken<ITokenPayload>(
         { id: user.id, count: user.count },
         'resetPassword',
       );
@@ -323,7 +327,7 @@ export class AuthService {
    * his account after registration
    */
   private async sendConfirmationEmail(user: IMessageUser): Promise<string> {
-    const emailToken = await this.generateAuthToken(
+    const emailToken = await this.generateAuthToken<ITokenPayload>(
       { id: user.id, count: user.count },
       'confirmation',
     );
@@ -343,10 +347,23 @@ export class AuthService {
   private async generateAuthTokens({
     id,
     count,
+    name,
   }: IMessageUser): Promise<[string, string]> {
+    const profiles = await this.getMessageProfiles(id);
+    const roles: Record<number, IAccessProfile> = {};
+
+    for (const profile of profiles) {
+      const { institutionId, profileId, role, status } = profile;
+      roles[institutionId] = {
+        id: profileId,
+        role,
+        status,
+      };
+    }
+
     return Promise.all([
-      this.generateAuthToken({ id }, 'access'),
-      this.generateAuthToken({ id, count }, 'refresh'),
+      this.generateAuthToken<IAccessPayload>({ id, roles, name }, 'access'),
+      this.generateAuthToken<ITokenPayload>({ id, count }, 'refresh'),
     ]);
   }
 
@@ -356,8 +373,8 @@ export class AuthService {
    * A generic jwt generator that generates all tokens needed
    * for auth (access, refresh, confirmation & resetPassword)
    */
-  private async generateAuthToken(
-    payload: ITokenPayload | IAccessPayload,
+  private async generateAuthToken<T = ITokenPayload | IAccessPayload>(
+    payload: T,
     type: keyof IJwt,
   ): Promise<string> {
     const { secret, time } = this.configService.get<ISingleJwt>(`jwt.${type}`);
@@ -410,5 +427,26 @@ export class AuthService {
       throw new BadRequestException(message.message as string);
 
     return message.message as IMessageUser;
+  }
+
+  private async getMessageProfiles(userId: number): Promise<IMessageProfile[]> {
+    const message = await this.commonService.throwInternalError(
+      firstValueFrom(
+        this.usersClient
+          .send<IRedisMessage<IMessageProfile[] | string>>(
+            { cmd: 'USER_PROFILES' },
+            {
+              apiId: this.authNamespace,
+              userId,
+            },
+          )
+          .pipe(timeout(2000)),
+      ),
+    );
+
+    if (message.status === 'error')
+      throw new BadRequestException(message.message as string);
+
+    return message.message as IMessageProfile[];
   }
 }

@@ -1,5 +1,3 @@
-import { TITLE_REGEX } from '@app/common/constants';
-import { FileUploadDto } from '@app/uploader/dtos';
 import { Field, InputType, Int } from '@nestjs/graphql';
 import { Type } from 'class-transformer';
 import {
@@ -12,16 +10,12 @@ import {
   Min,
   ValidatePromise,
 } from 'class-validator';
-import GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
+import { GraphQLUpload } from 'graphql-upload';
+import { TITLE_REGEX } from '../../common/constants';
+import { FileUploadDto } from '../../uploader/dtos';
 
 @InputType('CreateResourceInput')
 export class CreateResourceInput {
-  @Field(() => Int)
-  @IsNumber()
-  @IsInt()
-  @Min(1)
-  public courseId: number;
-
   @Field(() => Int)
   @IsNumber()
   @IsInt()

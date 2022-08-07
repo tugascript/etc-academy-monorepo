@@ -1,3 +1,4 @@
+import { NAME_REGEX, PASSWORD_REGEX } from 'src/common/constants';
 import {
   IsEmail,
   IsString,
@@ -6,7 +7,6 @@ import {
   Matches,
   MinLength,
 } from 'class-validator';
-import { NAME_REGEX, PASSWORD_REGEX } from '@app/common/constants';
 
 export abstract class RegisterDto {
   @IsString()

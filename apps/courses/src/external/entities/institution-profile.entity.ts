@@ -1,7 +1,7 @@
 import { Entity } from '@mikro-orm/core';
 import { Field, ObjectType } from '@nestjs/graphql';
-import { LocalBaseType } from '../common/entities/gql';
-import { ProfileRoleEnum, ProfileStatusEnum } from '../common/enums';
+import { LocalBaseType } from '../../common/entities/gql';
+import { ProfileRoleEnum, ProfileStatusEnum } from '../../common/enums';
 import { InstitutionEntity } from './institution.entity';
 import { UserEntity } from './user.entity';
 

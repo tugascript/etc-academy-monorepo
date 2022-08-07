@@ -1,4 +1,4 @@
-import { IBase } from '@app/common/interfaces';
+import { IBase } from '../../common/interfaces';
 import { IInstitution } from '../../institutions/interfaces/institution.interface';
 import { IUser } from '../../users/interfaces/user.interface';
 import { AddressTypeEnum } from '../enums/address-type.enum';

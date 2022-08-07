@@ -1,4 +1,4 @@
-import { SearchDto } from '@app/common/dtos';
+import { SearchDto } from 'src/common/dtos';
 import { ArgsType, Field, Int } from '@nestjs/graphql';
 import { IsInt, IsNumber, Min } from 'class-validator';
 

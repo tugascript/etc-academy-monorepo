@@ -1,7 +1,7 @@
 {
-  "name": "backend",
+  "name": "Auth",
   "version": "0.0.1",
-  "description": "NestJS & Mercurius Monolith Back-End Template",
+  "description": "Etc-Academy Auth Micro-service",
   "author": "Afonso Barracha",
   "private": true,
   "license": "MIT",

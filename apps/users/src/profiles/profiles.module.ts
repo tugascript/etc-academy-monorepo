@@ -9,6 +9,7 @@ import { ProfilesService } from './profiles.service';
 import { InvitationsResolver } from './resolvers/invitations.resolver';
 import { ProfileRequestsResolver } from './resolvers/profile-requests.resolver';
 import { ProfilesResolver } from './resolvers/profiles.resolver';
+import { ProfilesController } from './profiles.controller';
 
 @Module({
   imports: [
@@ -27,5 +28,6 @@ import { ProfilesResolver } from './resolvers/profiles.resolver';
     ProfilesService,
   ],
   exports: [ProfilesService],
+  controllers: [ProfilesController],
 })
 export class ProfilesModule {}

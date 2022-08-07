@@ -1,8 +1,8 @@
-import { SearchDto } from 'app/common/dtos';
 import { ArgsType, Field } from '@nestjs/graphql';
-import { InstitutionTypeEnum } from '../enums/institution-type.enum';
 import { IsEnum, IsOptional } from 'class-validator';
 import { CountryCodesEnum } from '../../addresses/enums/contry-codes.enum';
+import { SearchDto } from '../../common/dtos';
+import { InstitutionTypeEnum } from '../enums/institution-type.enum';
 
 @ArgsType()
 export abstract class SearchInstitutionsDto extends SearchDto {

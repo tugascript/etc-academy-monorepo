@@ -1,11 +1,11 @@
-import { IUser } from '../../users/interfaces/user.interface';
-import { IInstitution } from '../../institutions/interfaces/institution.interface';
 import {
   ProfileRoleEnum,
   ProfileStatusEnum,
   RequestStatusEnum,
-} from '@app/common/enums';
-import { IBase } from '@app/common/interfaces';
+} from 'src/common/enums';
+import { IBase } from 'src/common/interfaces';
+import { IInstitution } from '../../institutions/interfaces/institution.interface';
+import { IUser } from '../../users/interfaces/user.interface';
 
 export interface IProfileRequest extends IBase {
   recipient: IUser;

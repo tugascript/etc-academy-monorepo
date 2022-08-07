@@ -1,5 +1,5 @@
+import { Paginated } from 'src/common/entities/gql';
 import { ObjectType } from '@nestjs/graphql';
-import { Paginated } from '@app/common/entities/gql';
 import { ProfileRequestEntity } from '../profile-request.entity';
 
 @ObjectType('PaginatedProfileRequests')

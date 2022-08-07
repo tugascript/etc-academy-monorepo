@@ -1,7 +1,7 @@
-import { CurrentUser, Public } from '@app/common/decorators';
-import { TokenDto } from '@app/common/dtos';
-import { LocalMessageType } from '@app/common/entities/gql';
-import { IAccessUser } from '@app/common/interfaces';
+import { CurrentUser, Public } from 'src/common/decorators';
+import { TokenDto } from 'src/common/dtos';
+import { LocalMessageType } from 'src/common/entities/gql';
+import { IAccessUser, IReference } from 'src/common/interfaces';
 import {
   Args,
   Mutation,
@@ -55,7 +55,7 @@ export class InvitationsResolver {
   }
 
   @ResolveReference()
-  public resolveReference(_: unknown) {
+  public resolveReference(_: IReference) {
     return;
   }
 }

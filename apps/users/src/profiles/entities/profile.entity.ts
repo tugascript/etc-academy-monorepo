@@ -1,6 +1,3 @@
-import { SLUG_REGEX } from '@app/common/constants';
-import { LocalBaseEntity } from '@app/common/entities';
-import { ProfileRoleEnum, ProfileStatusEnum } from '@app/common/enums';
 import { Entity, Enum, ManyToOne, Property, Unique } from '@mikro-orm/core';
 import { Field, ObjectType } from '@nestjs/graphql';
 import {
@@ -11,12 +8,15 @@ import {
   Matches,
   MaxLength,
 } from 'class-validator';
+import { SLUG_REGEX } from '../../common/constants';
+import { LocalBaseEntity } from '../../common/entities';
+import { ProfileRoleEnum, ProfileStatusEnum } from '../../common/enums';
 import { InstitutionEntity } from '../../institutions/entities/institution.entity';
 import { UserEntity } from '../../users/entities/user.entity';
 import { IProfile } from '../interfaces/profile.interface';
 
-@ObjectType('Profile')
-@Entity({ tableName: 'profiles' })
+@ObjectType('InstitutionProfile')
+@Entity({ tableName: 'institution_profiles' })
 @Unique({ properties: ['user', 'institution'] })
 export class ProfileEntity extends LocalBaseEntity implements IProfile {
   @Field(() => String)

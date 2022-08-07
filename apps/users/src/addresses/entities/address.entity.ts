@@ -1,8 +1,8 @@
-import { ADDRESS_REGEX, NAME_REGEX } from '@app/common/constants';
-import { LocalBaseEntity } from '@app/common/entities';
 import { Entity, Enum, ManyToOne, Property } from '@mikro-orm/core';
 import { Field, ObjectType } from '@nestjs/graphql';
 import { IsEnum, IsOptional, IsString, Length, Matches } from 'class-validator';
+import { ADDRESS_REGEX, NAME_REGEX } from '../../common/constants';
+import { LocalBaseEntity } from '../../common/entities';
 import { InstitutionEntity } from '../../institutions/entities/institution.entity';
 import { UserEntity } from '../../users/entities/user.entity';
 import { AddressTypeEnum } from '../enums/address-type.enum';

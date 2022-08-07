@@ -1,5 +1,10 @@
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { redisUrlToOptions } from 'src/common/utils';
 import { IConfig } from './interfaces/config.interface';
-import { redisUrlToOptions } from '@app/common/utils';
+
+const keyPath = join(__dirname, '..', '..', 'jwt.key');
+const key = readFileSync(keyPath, 'utf8');
 
 export function config(): IConfig {
   const testing = process.env.NODE_ENV !== 'production';
@@ -9,7 +14,7 @@ export function config(): IConfig {
     redis: redisUrlToOptions(process.env.REDIS_URL),
     jwt: {
       access: {
-        secret: process.env.JWT_ACCESS_SECRET,
+        secret: key,
         time: parseInt(process.env.JWT_ACCESS_TIME, 10),
       },
       confirmation: {

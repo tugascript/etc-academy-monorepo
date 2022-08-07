@@ -1,8 +1,3 @@
-import { CurrentUser, Public } from '@app/common/decorators';
-import { SearchDto, SlugDto } from '@app/common/dtos';
-import { FilterRelationDto } from '@app/common/dtos/filter-relation.dto';
-import { LocalMessageType } from '@app/common/entities/gql';
-import { IAccessUser, IPaginated } from '@app/common/interfaces';
 import {
   Args,
   Mutation,
@@ -12,6 +7,11 @@ import {
   ResolveReference,
 } from '@nestjs/graphql';
 import { AddressEntity } from '../addresses/entities/address.entity';
+import { CurrentUser, Public } from '../common/decorators';
+import { SearchDto, SlugDto } from '../common/dtos';
+import { FilterRelationDto } from '../common/dtos/filter-relation.dto';
+import { LocalMessageType } from '../common/entities/gql';
+import { IAccessUser, IPaginated, IReference } from '../common/interfaces';
 import { PaginatedProfilesType } from '../profiles/entities/gql/paginated-profiles.type';
 import { InstitutionDto } from './dtos/institution.dto';
 import { SearchInstitutionsDto } from './dtos/search-institutions.dto';
@@ -121,7 +121,7 @@ export class InstitutionsResolver {
 
   // Resolved by the loaders
   @ResolveReference()
-  public resolveReference(_: unknown) {
+  public resolveReference(_: IReference) {
     return;
   }
 }

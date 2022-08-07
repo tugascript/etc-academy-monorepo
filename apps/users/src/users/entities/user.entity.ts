@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
-import { BCRYPT_HASH, NAME_REGEX, SLUG_REGEX } from '@app/common/constants';
-import { LocalBaseEntity } from '@app/common/entities';
 import {
   Collection,
   Embedded,
@@ -20,6 +18,8 @@ import {
   Length,
   Matches,
 } from 'class-validator';
+import { BCRYPT_HASH, NAME_REGEX, SLUG_REGEX } from '../../common/constants';
+import { LocalBaseEntity } from '../../common/entities';
 import { InstitutionEntity } from '../../institutions/entities/institution.entity';
 import { ProfileEntity } from '../../profiles/entities/profile.entity';
 import { CredentialsEmbeddable } from '../embeddables/credentials.embeddable';

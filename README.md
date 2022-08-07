@@ -1,109 +1,54 @@
-# NestJS GraphQL Boilerplate
+# ETC ACADEMY GRAPHQL MONOREPO
 
-## Description
+Monorepo para o protótipo da nossa web app chamada ETC Academy.
 
-Full boilerplate of a NestJS, GraphQL and PostgreSQL (with Mikro-ORM) monolithic backend app.
-It implements:
-
-- Configuration (adds most used config classes):
-
-*
-    - Cache with Redis
-*
-    - GraphQL with subscriptions and GraphQL through Websockets
-*
-    - MikroORM with SQLite in development and PostgreSQL in production
-
-- Authentication:
-
-*
-    - JWT Authentication for HTTP
-*
-    - Custom Session Authentication for Websockets (based on Facebook Messenger Design)
-*
-    - Two-Factor authentication with email
-
-- Uploader:
-
-*
-    - Basic image only uploader with Sharp optimizations for a generic S3 Bucket
-
-- Pagination:
-
-*
-    - Has the generics for Edges and Paginated types
-*
-    - Relay cursor pagination function
-
-## Installation
+## Instalação
 
 ```bash
-$ yarn install
+~ yarn install
+~ cd apps/users yarn install
+~ cd ../courses yarn install
+~ cd ../gateway yarn install
+~ cd ../auth yarn install
 ```
 
-## Database Migrations
+## Configuração
+
+Ir a todos os serviços e ver na pasta /src/config/validation.ts ver que variáveis de ambiente são obrigatórias.
+Depois de saber quais são, criar um ficheiro .env com as mesmas em cada serviço.
+
+## Preparação para Correr
+
+Em terminais diferentes
 
 ```bash
-# creation
-$ yarn migrate:create
-# update
-$ yarn migrate:update
+~ docker-compose up
+~ cd apps/users migrate:create
+~ cd ../courses migrate:create
 ```
 
-## Running the app
+## Correr
 
 ```bash
-# production mode
-$ yarn start
-
-# watch mode
-$ yarn start:dev
-
-# debug mode
-$ yarn start:debug
+~ cd apps/users yarn start:dev
+~ cd ../courses yarn start:dev
+~ cd ../gateway yarn start:dev
+~ cd ../auth yarn start:dev
 ```
 
-## Unit Testing
+URL de teste: http://localhost:5000/graphql
 
-### BEFORE EACH TEST (Individual or All):
+## Arquitetura
 
-- Check if NODE_ENV is not production
-- Remove the current test.db
-- Create a new test.db
+### 2 Micro-serviços:
 
-```bash
-# remove test.db
-$ rm test.db
-# create a new test.db
-$ yarn migrate:create
-```
+* **Users:** Tem uma implementação básica dos utilizadores e instituições, relacionados pela tabela dos perfis.
+* **Courses:** Tem uma implementação básica dos cursos, só com um nível de profundidade sobre as aulas.
 
-### All tests:
+### 2 Gateways:
 
-```bash
-# unit tests
-$ yarn run test  --detectOpenHandles
-```
+* **Gateway:** Federated Gateway da Apollo para GraphQL onde junta os dois micro-serviços num super-esquema que onde se
+  pode fazer queries em cima.
+* **Auth:** Micro-serviço que implementa o serviço de autenticação OAuth Local com JWT em REST.
 
-### Individual test:
 
-```bash
-# unit tests
-$ yarn run test service-name.service.spec.ts --detectOpenHandles
-```
-
-## Support the frameworks used in this template
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If
-you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-Mikro-ORM is a TypeScript ORM for Node.js based on Data Mapper, Unit of Work and Identity Map patterns. If you like
-MikroORM, give it a [star](https://github.com/mikro-orm/mikro-orm) on GitHub and
-consider [sponsoring](https://github.com/sponsors/B4nan) its development!
-
-[Sharp](https://github.com/lovell/sharp) is a high performance Node.js image processor. If you want
-to [support them.](https://opencollective.com/libvips)
-
-## License
-
-This template is [MIT licensed](LICENSE).

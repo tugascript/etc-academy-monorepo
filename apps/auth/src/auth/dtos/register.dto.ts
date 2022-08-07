@@ -1,6 +1,6 @@
+import { NAME_REGEX } from 'src/common/constants';
 import { IsEmail, IsString, Length, Matches } from 'class-validator';
 import { PasswordsDto } from './passwords.dto';
-import { NAME_REGEX } from 'app/common/constants';
 
 export abstract class RegisterDto extends PasswordsDto {
   @IsString()

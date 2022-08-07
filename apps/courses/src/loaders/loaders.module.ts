@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { LoadersService } from './loaders.service';
 
 @Module({
-  providers: [LoadersService]
+  providers: [LoadersService],
+  exports: [LoadersService],
 })
 export class LoadersModule {}

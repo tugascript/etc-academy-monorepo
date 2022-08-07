@@ -1,5 +1,5 @@
-import { IReference } from '@app/common/interfaces';
+import { IReference } from 'src/common/interfaces';
 
 export interface IProfileReference extends IReference {
-  __typename: 'Profile';
+  __typename: 'InstitutionProfile';
 }

@@ -1,9 +1,9 @@
-import { CommonService } from '@app/common';
-import { FilterRelationDto } from '@app/common/dtos';
 import { EntityManager } from '@mikro-orm/postgresql';
 import { Injectable, Type } from '@nestjs/common';
-import { IBase, ILoader, IPaginated, IReference } from 'app/common/interfaces';
 import { MercuriusContext } from 'mercurius';
+import { CommonService } from 'src/common';
+import { FilterRelationDto } from 'src/common/dtos';
+import { IBase, ILoader, IPaginated, IReference } from 'src/common/interfaces';
 import { AddressEntity } from '../addresses/entities/address.entity';
 import { InstitutionEntity } from '../institutions/entities/institution.entity';
 import { InvitationEntity } from '../profiles/entities/invitation.entity';
@@ -120,7 +120,7 @@ export class LoadersService {
         profiles: this.loadUserProfiles(),
         institutions: this.loadUsersInstitutions(),
       },
-      Profile: {
+      InstitutionProfile: {
         __resolveReference: this.loadProfilesReferences(),
         user: this.loadProfilesUser(),
         institution: this.loadProfilesInstitution(),
@@ -145,7 +145,7 @@ export class LoadersService {
       Address: {
         __resolveReference: this.loadAddressesReferences(),
         institution: this.loadAddressesInstitution(),
-        owner: this.loadAddressesOwner(),
+        author: this.loadAddressesAuthor(),
       },
     };
   }
@@ -417,13 +417,13 @@ export class LoadersService {
     };
   }
 
-  private loadAddressesOwner() {
+  private loadAddressesAuthor() {
     return async (
       items: ILoader<AddressEntity>[],
       _: MercuriusContext,
     ): Promise<UserEntity[]> => {
       if (items.length === 0) return [];
-      const ids = LoadersService.getRelationIds(items, 'owner');
+      const ids = LoadersService.getRelationIds(items, 'author');
       const users = await this.em.find(UserEntity, {
         id: {
           $in: ids,

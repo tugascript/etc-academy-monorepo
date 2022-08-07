@@ -1,7 +1,7 @@
 {
-  "name": "Gateway",
+  "name": "Users",
   "version": "0.0.1",
-  "description": "Etc-Academy Gateway Micro-service",
+  "description": "Etc-Academy Users Micro-service",
   "author": "Afonso Barracha",
   "private": true,
   "license": "MIT",

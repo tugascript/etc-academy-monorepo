@@ -1,6 +1,6 @@
 import { Entity } from '@mikro-orm/core';
 import { Field, GraphQLTimestamp, ObjectType } from '@nestjs/graphql';
-import { LocalBaseType } from '../common/entities/gql';
+import { LocalBaseType } from '../../common/entities/gql';
 
 @ObjectType('User')
 @Entity({ abstract: true })

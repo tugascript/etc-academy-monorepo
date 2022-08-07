@@ -5,7 +5,7 @@ import { IEmailConfig } from '../config/interfaces/email-config.interface';
 import { confirmationEmail } from './templates/confirmation';
 import { loginConfirmationEmail } from './templates/login-confirmation';
 import { passwordResetEmail } from './templates/password-reset';
-import { IMessageUser } from '@app/common/interfaces';
+import { IMessageUser } from 'src/common/interfaces';
 
 @Injectable()
 export class EmailService {

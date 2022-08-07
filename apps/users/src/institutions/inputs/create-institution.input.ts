@@ -1,4 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
+import { Type } from 'class-transformer';
 import {
   IsEnum,
   IsOptional,
@@ -8,11 +9,10 @@ import {
   ValidateNested,
   ValidatePromise,
 } from 'class-validator';
-import { NAME_REGEX } from '@app/common/constants';
-import GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
-import { FileUploadDto } from '@app/uploader/dtos';
-import { Type } from 'class-transformer';
+import { GraphQLUpload } from 'graphql-upload';
 import { InitialAddressInput } from '../../addresses/inputs/initial-address.input';
+import { NAME_REGEX } from '../../common/constants';
+import { FileUploadDto } from '../../uploader/dtos';
 import { InstitutionTypeEnum } from '../enums/institution-type.enum';
 
 @InputType('CreateInstitutionInput')

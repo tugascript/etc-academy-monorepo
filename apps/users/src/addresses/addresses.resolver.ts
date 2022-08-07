@@ -1,7 +1,13 @@
-import { CurrentUser } from '@app/common/decorators';
-import { IAccessUser } from '@app/common/interfaces';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { LocalMessageType } from 'app/common/entities/gql';
+import { CurrentUser } from 'src/common/decorators';
+import { LocalMessageType } from 'src/common/entities/gql';
+import { IAccessUser, IReference } from 'src/common/interfaces';
+import {
+  Args,
+  Mutation,
+  Query,
+  Resolver,
+  ResolveReference,
+} from '@nestjs/graphql';
 import { InstitutionDto } from '../institutions/dtos/institution.dto';
 import { AddressesService } from './addresses.service';
 import { AddressTypeDto } from './dtos/address-type.dto';
@@ -51,5 +57,10 @@ export class AddressesResolver {
     @Args() dto: AddressTypeDto,
   ): Promise<AddressEntity[]> {
     return this.addressesService.addressesByType(user.id, dto);
+  }
+
+  @ResolveReference()
+  public resolveReference(_: IReference) {
+    return;
   }
 }

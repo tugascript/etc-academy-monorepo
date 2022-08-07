@@ -7,7 +7,7 @@ import { CacheConfig } from './config/cache.config';
 import { AuthModule } from './auth/auth.module';
 import { EmailModule } from './email/email.module';
 import { APP_GUARD } from '@nestjs/core';
-import { AuthGuard } from '@app/common';
+import { AuthGuard } from 'src/common';
 
 @Module({
   imports: [

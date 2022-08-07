@@ -1,14 +1,15 @@
+import { InjectRepository } from '@mikro-orm/nestjs';
+import { EntityRepository } from '@mikro-orm/postgresql';
 import {
   BadRequestException,
   Injectable,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { ProfileEntity } from './entities/profile.entity';
-import { EntityRepository } from '@mikro-orm/postgresql';
-import { InjectRepository } from '@mikro-orm/nestjs';
-import { CommonService } from '@app/common';
-import { UploaderService } from '@app/uploader';
+import { ConfigService } from '@nestjs/config';
+import { RpcException } from '@nestjs/microservices';
+import { CommonService } from 'src/common';
+import { LocalMessageType } from 'src/common/entities/gql';
 import {
   getQueryCursor,
   ProfileRoleEnum,
@@ -18,29 +19,28 @@ import {
   RatioEnum,
   RequestStatusEnum,
   RequestUserEnum,
-} from '@app/common/enums';
-import { UsersService } from '../users/users.service';
-import { InvitationEntity } from './entities/invitation.entity';
-import { CreateProfileInput } from './inputs/create-profile.input';
+} from 'src/common/enums';
+import { IId, IPaginated } from 'src/common/interfaces';
+import { generateToken, verifyToken } from 'src/common/utils';
+import { UploaderService } from 'src/uploader';
 import { EmailService } from '../email/email.service';
-import { ConfigService } from '@nestjs/config';
-import { generateToken, verifyToken } from '@app/common/utils';
-import { ProfileRequestEntity } from './entities/profile-request.entity';
-import { LocalMessageType } from '@app/common/entities/gql';
-import { IId, IPaginated } from '@app/common/interfaces';
-import { RespondToInvitationInput } from './inputs/respond-to-invitation.input';
 import { UserEntity } from '../users/entities/user.entity';
-import { RespondToProfileRequestInput } from './inputs/respond-to-profile-request.input';
+import { UsersService } from '../users/users.service';
 import { FilterProfileRequestsDto } from './dtos/filter-profile-requests.dto';
 import { FilterProfilesDto } from './dtos/filter-profiles.dto';
 import { UpdateProfilePictureDto } from './dtos/update-profile-picture.dto';
-import { UpdateProfileStatusDto } from './dtos/update-profile-status.dto';
 import { UpdateProfileRoleDto } from './dtos/update-profile-role.dto';
+import { UpdateProfileStatusDto } from './dtos/update-profile-status.dto';
+import { InvitationEntity } from './entities/invitation.entity';
+import { ProfileRequestEntity } from './entities/profile-request.entity';
+import { ProfileEntity } from './entities/profile.entity';
+import { CreateProfileInput } from './inputs/create-profile.input';
+import { RespondToInvitationInput } from './inputs/respond-to-invitation.input';
+import { RespondToProfileRequestInput } from './inputs/respond-to-profile-request.input';
 
 @Injectable()
 export class ProfilesService {
-  private readonly frontendUrl =
-    this.configService.get<string>('FRONT_END_URL');
+  private readonly frontendUrl = this.configService.get<string>('FRONTEND_URL');
   private readonly invitationPassword = this.configService.get<string>(
     'INVITATION_JWT_PASSWORD',
   );
@@ -435,6 +435,30 @@ export class ProfilesService {
       after,
       cursor === QueryCursorEnum.DATE,
     );
+  }
+
+  public async userProfiles(userId: number): Promise<ProfileEntity[]> {
+    return this.profilesRepository.find(
+      {
+        user: userId,
+      },
+      {
+        populate: ['user'],
+      },
+    );
+  }
+
+  public async userProfileById(profileId: number): Promise<ProfileEntity> {
+    const profile = await this.profilesRepository.findOne(
+      {
+        id: profileId,
+      },
+      {
+        populate: ['user'],
+      },
+    );
+    if (!profile) throw new RpcException('Profile not found');
+    return profile;
   }
 
   public async requestById(

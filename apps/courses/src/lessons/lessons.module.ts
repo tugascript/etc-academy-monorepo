@@ -1,8 +1,13 @@
+import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Module } from '@nestjs/common';
-import { ClassesResolver } from './classes.resolver';
-import { ClassesService } from './classes.service';
+import { ProfilesModule } from '../profiles/profiles.module';
+import { LessonEntity } from './entities/lesson.entity';
+import { LessonsResolver } from './lessons.resolver';
+import { LessonsService } from './lessons.service';
 
 @Module({
-  providers: [ClassesResolver, ClassesService],
+  imports: [MikroOrmModule.forFeature([LessonEntity]), ProfilesModule],
+  providers: [LessonsResolver, LessonsService],
+  exports: [LessonsService],
 })
-export class ClassesModule {}
+export class LessonsModule {}

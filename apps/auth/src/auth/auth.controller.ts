@@ -1,17 +1,17 @@
+import { CurrentUser, Public } from 'src/common/decorators';
+import { LocalMessageType } from 'src/common/entities/gql';
+import { IAccessUser } from 'src/common/interfaces';
 import { Body, Controller, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { AuthService } from './auth.service';
-import { ChangePasswordDto } from './dtos/update-password.dto';
 import { ConfirmEmailDto } from './dtos/confirm-email.dto';
 import { ConfirmLoginDto } from './dtos/confirm-login.dto';
 import { LoginDto } from './dtos/login.dto';
 import { RegisterDto } from './dtos/register.dto';
 import { ResetEmailDto } from './dtos/reset-email.dto';
 import { ResetPasswordDto } from './dtos/reset-password.dto';
+import { ChangePasswordDto } from './dtos/update-password.dto';
 import { FastifyThrottlerGuard } from './guards/fastify-throttler.guard';
-import { LocalMessageType } from 'app/common/entities/gql';
-import { CurrentUser, Public } from 'app/common/decorators';
-import { IAccessUser } from 'app/common/interfaces';
 
 @Controller('api/auth')
 @UseGuards(FastifyThrottlerGuard)

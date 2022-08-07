@@ -1,6 +1,6 @@
+import { RequestStatusEnum } from 'src/common/enums';
 import { Field, InputType } from '@nestjs/graphql';
 import { IsEnum, IsIn, IsJWT, IsString } from 'class-validator';
-import { RequestStatusEnum } from '@app/common/enums';
 
 @InputType('RespondToInvitationInput')
 export abstract class RespondToInvitationInput {

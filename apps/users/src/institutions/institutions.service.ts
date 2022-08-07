@@ -1,14 +1,3 @@
-import { CommonService } from '@app/common';
-import { SearchDto } from '@app/common/dtos';
-import { LocalMessageType } from '@app/common/entities/gql';
-import {
-  getQueryCursor,
-  ProfileRoleEnum,
-  QueryCursorEnum,
-  RatioEnum,
-} from '@app/common/enums';
-import { IPaginated } from '@app/common/interfaces';
-import { UploaderService } from '@app/uploader';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { EntityRepository } from '@mikro-orm/postgresql';
 import {
@@ -17,7 +6,18 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { AddressesService } from '../addresses/addresses.service';
+import { CommonService } from '../common';
+import { SearchDto } from '../common/dtos';
+import { LocalMessageType } from '../common/entities/gql';
+import {
+  getQueryCursor,
+  ProfileRoleEnum,
+  QueryCursorEnum,
+  RatioEnum,
+} from '../common/enums';
+import { IPaginated } from '../common/interfaces';
 import { ProfilesService } from '../profiles/profiles.service';
+import { UploaderService } from '../uploader';
 import { SearchInstitutionsDto } from './dtos/search-institutions.dto';
 import { UpdateInstitutionDescriptionDto } from './dtos/update-institution-description.dto';
 import { UpdateInstitutionNameDto } from './dtos/update-institution-name.dto';
@@ -54,7 +54,7 @@ export class InstitutionsService {
     const image = await this.uploaderService.uploadImage(
       userId,
       picture,
-      RatioEnum.BANNER,
+      RatioEnum.SQUARE,
     );
     const institution = this.institutionsRepository.create({
       name,
@@ -121,7 +121,7 @@ export class InstitutionsService {
     institution.picture = await this.uploaderService.uploadImage(
       userId,
       picture,
-      RatioEnum.BANNER,
+      RatioEnum.SQUARE,
     );
     await this.commonService.saveEntity(
       this.institutionsRepository,

@@ -1,9 +1,9 @@
-import { CommonService } from '@app/common';
-import { LocalMessageType } from '@app/common/entities/gql';
-import { ProfileRoleEnum } from '@app/common/enums';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { EntityRepository } from '@mikro-orm/postgresql';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { CommonService } from 'src/common';
+import { LocalMessageType } from 'src/common/entities/gql';
+import { ProfileRoleEnum } from 'src/common/enums';
 import { ProfilesService } from '../profiles/profiles.service';
 import { AddressTypeDto } from './dtos/address-type.dto';
 import { AddressDto } from './dtos/address.dto';

@@ -1,19 +1,19 @@
 import { Controller, UseFilters } from '@nestjs/common';
-import { MessagePattern, RpcException } from '@nestjs/microservices';
-import { RegisterDto } from './dtos/register.dto';
-import { ExceptionFilter } from './filters/exception.filter';
-import { UsersService } from './users.service';
 import { ConfigService } from '@nestjs/config';
-import { ChangePasswordDto } from './dtos/change-password.dto';
-import { UpdatePasswordDto } from './dtos/update-password.dto';
-import { IApiId } from './interfaces/api-id.interface';
-import { ApiUserIdDto } from './dtos/api-user-id.dto';
+import { MessagePattern, RpcException } from '@nestjs/microservices';
+import { RedisMessageDto } from '../common/dtos';
+import { IMessageUser, IRedisMessage } from '../common/interfaces';
 import { ApiUserEmailDto } from './dtos/api-user-email.dto';
-import { UserEntity } from './entities/user.entity';
-import { IMessageUser, IRedisMessage } from '@app/common/interfaces';
+import { ApiUserIdDto } from './dtos/api-user-id.dto';
+import { ChangePasswordDto } from './dtos/change-password.dto';
 import { LoginDto } from './dtos/login.dto';
-import { RedisMessageDto } from '@app/common/dtos';
+import { RegisterDto } from './dtos/register.dto';
+import { UpdatePasswordDto } from './dtos/update-password.dto';
 import { UserPayloadDto } from './dtos/user-payload.dto';
+import { UserEntity } from './entities/user.entity';
+import { ExceptionFilter } from './filters/exception.filter';
+import { IApiId } from './interfaces/api-id.interface';
+import { UsersService } from './users.service';
 
 @UseFilters(new ExceptionFilter())
 @Controller()

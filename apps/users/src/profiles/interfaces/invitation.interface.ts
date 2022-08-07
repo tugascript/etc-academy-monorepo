@@ -1,9 +1,9 @@
-import { IBase } from '@app/common/interfaces';
 import {
   ProfileRoleEnum,
   ProfileStatusEnum,
   RequestStatusEnum,
-} from '@app/common/enums';
+} from 'src/common/enums';
+import { IBase } from 'src/common/interfaces';
 import { IInstitution } from '../../institutions/interfaces/institution.interface';
 import { IUser } from '../../users/interfaces/user.interface';
 

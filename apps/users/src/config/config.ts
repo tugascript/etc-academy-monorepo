@@ -1,5 +1,5 @@
-import { redisUrlToOptions } from '@app/common/utils';
 import { LoadStrategy } from '@mikro-orm/core';
+import { redisUrlToOptions } from '../common/utils';
 import { IConfig } from './interfaces/config.interface';
 
 export function config(): IConfig {
@@ -40,6 +40,15 @@ export function config(): IConfig {
     upload: {
       maxFileSize: parseInt(process.env.MAX_FILE_SIZE, 10),
       maxFiles: parseInt(process.env.MAX_FILES, 10),
+    },
+    email: {
+      host: process.env.EMAIL_HOST,
+      port: parseInt(process.env.EMAIL_PORT, 10),
+      secure: process.env.EMAIL_SECURE === 'true',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
     },
     testing,
   };

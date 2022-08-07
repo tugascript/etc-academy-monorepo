@@ -1,7 +1,7 @@
+import { IRedisMessage } from 'src/common/interfaces';
 import { ArgumentsHost, Catch, RpcExceptionFilter } from '@nestjs/common';
-import { Observable, throwError } from 'rxjs';
 import { RpcException } from '@nestjs/microservices';
-import { IRedisMessage } from '@app/common/interfaces';
+import { Observable, throwError } from 'rxjs';
 
 @Catch(RpcException)
 export class ExceptionFilter implements RpcExceptionFilter<RpcException> {

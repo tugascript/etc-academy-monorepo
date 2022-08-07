@@ -1,3 +1,7 @@
+import fastifyCookie from '@fastify/cookie';
+import fastifyCors from '@fastify/cors';
+import fastifyCsrf from '@fastify/csrf-protection';
+import fastifyStatic from '@fastify/static';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
@@ -5,10 +9,6 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
-import fastifyCookie from '@fastify/cookie';
-import fastifyCors from '@fastify/cors';
-import fastifyStatic from '@fastify/static';
-import fastifyCsrf from '@fastify/csrf-protection';
 import { UploadOptions } from 'graphql-upload';
 import mercuriusUpload from 'mercurius-upload';
 import { join } from 'path';
@@ -23,7 +23,6 @@ async function bootstrap() {
   const testing = configService.get<boolean>('testing');
   app.register(fastifyCors, {
     credentials: true,
-    origin: configService.get<string>('url'),
   });
   app.register(fastifyCookie, {
     secret: configService.get<string>('COOKIE_SECRET'),
@@ -40,4 +39,5 @@ async function bootstrap() {
     testing ? '127.0.0.1' : '0.0.0.0', // because of nginx
   );
 }
+
 bootstrap();

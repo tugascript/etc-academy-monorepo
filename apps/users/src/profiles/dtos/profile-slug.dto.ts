@@ -1,4 +1,4 @@
-import { SLUG_REGEX } from '@app/common/constants';
+import { SLUG_REGEX } from 'src/common/constants';
 import { ArgsType, Field } from '@nestjs/graphql';
 import { IsString, Length, Matches } from 'class-validator';
 import { InstitutionDto } from '../../institutions/dtos/institution.dto';

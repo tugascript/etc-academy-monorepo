@@ -25,29 +25,11 @@
       "@app/common/*": [
         "libs/common/src/*"
       ],
-      "app/common": [
-        "libs/common/src"
-      ],
-      "app/common/*": [
-        "libs/common/src/*"
-      ],
       "@app/uploader": [
         "libs/uploader/src"
       ],
       "@app/uploader/*": [
         "libs/uploader/src/*"
-      ],
-      "app/uploader": [
-        "libs/uploader/src"
-      ],
-      "app/uploader/*": [
-        "libs/uploader/src/*"
-      ],
-      "@app/mailer": [
-        "libs/mailer/src"
-      ],
-      "@app/mailer/*": [
-        "libs/mailer/src/*"
       ]
     }
   }

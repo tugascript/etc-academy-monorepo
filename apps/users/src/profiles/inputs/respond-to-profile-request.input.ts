@@ -1,8 +1,8 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
 import { IsEnum, IsIn, IsInt, IsNumber, Min } from 'class-validator';
-import { RequestStatusEnum } from '@app/common/enums';
+import { RequestStatusEnum } from 'src/common/enums';
 
-@InputType('RespondToInvitationInput')
+@InputType('RespondToProfileRequestInput')
 export abstract class RespondToProfileRequestInput {
   @Field(() => Int)
   @IsNumber()

@@ -1,12 +1,12 @@
-import { LocalBaseEntity } from '@app/common/entities';
+import { Entity, Enum, ManyToOne } from '@mikro-orm/core';
+import { Field, ObjectType } from '@nestjs/graphql';
+import { IsEnum } from 'class-validator';
+import { LocalBaseEntity } from '../../common/entities';
 import {
   ProfileRoleEnum,
   ProfileStatusEnum,
   RequestStatusEnum,
-} from '@app/common/enums';
-import { Entity, Enum, ManyToOne } from '@mikro-orm/core';
-import { Field, ObjectType } from '@nestjs/graphql';
-import { IsEnum } from 'class-validator';
+} from '../../common/enums';
 import { InstitutionEntity } from '../../institutions/entities/institution.entity';
 import { UserEntity } from '../../users/entities/user.entity';
 import { IProfileRequest } from '../interfaces/profile-request.interface';

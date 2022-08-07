@@ -1,3 +1,5 @@
+import { NAME_REGEX } from 'src/common/constants';
+import { ProfileRoleEnum, ProfileStatusEnum } from 'src/common/enums';
 import { Field, InputType, Int } from '@nestjs/graphql';
 import {
   IsEmail,
@@ -9,8 +11,6 @@ import {
   Matches,
   Min,
 } from 'class-validator';
-import { ProfileRoleEnum, ProfileStatusEnum } from '@app/common/enums';
-import { NAME_REGEX } from '@app/common/constants';
 
 @InputType('CreateProfileInput')
 export abstract class CreateProfileInput {

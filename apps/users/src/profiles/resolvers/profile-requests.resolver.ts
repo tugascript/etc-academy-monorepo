@@ -1,6 +1,6 @@
-import { CurrentUser } from '@app/common/decorators';
-import { LocalMessageType } from '@app/common/entities/gql';
-import { IAccessUser, IPaginated } from '@app/common/interfaces';
+import { CurrentUser } from 'src/common/decorators';
+import { LocalMessageType } from 'src/common/entities/gql';
+import { IAccessUser, IPaginated, IReference } from 'src/common/interfaces';
 import {
   Args,
   Mutation,
@@ -56,7 +56,7 @@ export class ProfileRequestsResolver {
   }
 
   @ResolveReference()
-  public resolveReference(_: unknown) {
+  public resolveReference(_: IReference) {
     return;
   }
 }

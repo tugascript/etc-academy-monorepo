@@ -1,11 +1,11 @@
-import { AuthGuard, CommonModule } from '@app/common';
-import { GraphQLFederationDriver } from '@app/common/drivers';
-import { UploaderModule } from '@app/uploader';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
+import { AuthGuard, CommonModule } from 'src/common';
+import { GraphQLFederationDriver } from 'src/common/drivers';
+import { UploaderModule } from 'src/uploader';
 import { AddressesModule } from './addresses/addresses.module';
 import { AppController } from './app.controller';
 import { config } from './config/config';

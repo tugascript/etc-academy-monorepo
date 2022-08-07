@@ -1,4 +1,3 @@
-import { MercuriusExtendedDriverConfig } from '@app/common/interfaces';
 import { HttpException, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GqlOptionsFactory } from '@nestjs/graphql';
@@ -6,10 +5,15 @@ import AltairFastify, {
   AltairFastifyPluginOptions,
 } from 'altair-fastify-plugin';
 import { GraphQLError } from 'graphql';
+import { MercuriusExtendedDriverConfig } from '../common/interfaces';
+import { AddressEntity } from '../external/entities/address.entity';
+import { ProfileEntity } from '../external/entities/institution-profile.entity';
+import { InstitutionEntity } from '../external/entities/institution.entity';
+import { UserEntity } from '../external/entities/user.entity';
 import { LoadersService } from '../loaders/loaders.service';
 
 @Injectable()
-export class GqlConfigService implements GqlOptionsFactory {
+export class GraphQLConfig implements GqlOptionsFactory {
   private readonly testing = this.configService.get<boolean>('testing');
 
   constructor(
@@ -23,8 +27,8 @@ export class GqlConfigService implements GqlOptionsFactory {
       ide: false,
       path: '/api/graphql',
       routes: true,
+      autoSchemaFile: true,
       federationMetadata: true,
-      autoSchemaFile: './schema.gql',
       errorFormatter: (error) => {
         const org = error.errors[0].originalError as HttpException;
         return {
@@ -36,6 +40,14 @@ export class GqlConfigService implements GqlOptionsFactory {
         };
       },
       loaders: this.loadersService.getLoaders(),
+      buildSchemaOptions: {
+        orphanedTypes: [
+          UserEntity,
+          InstitutionEntity,
+          ProfileEntity,
+          AddressEntity,
+        ],
+      },
       plugins: this.testing
         ? [
             {

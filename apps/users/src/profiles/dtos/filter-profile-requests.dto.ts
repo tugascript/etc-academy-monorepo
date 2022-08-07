@@ -1,6 +1,6 @@
+import { PaginationDto } from 'src/common/dtos';
+import { RequestStatusEnum, RequestUserEnum } from 'src/common/enums';
 import { ArgsType, Field } from '@nestjs/graphql';
-import { PaginationDto } from '@app/common/dtos';
-import { RequestStatusEnum, RequestUserEnum } from '@app/common/enums';
 import { IsEnum, IsOptional } from 'class-validator';
 
 @ArgsType()

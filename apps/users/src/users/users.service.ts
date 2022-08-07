@@ -1,23 +1,23 @@
 import { InjectRepository } from '@mikro-orm/nestjs';
 import { EntityRepository } from '@mikro-orm/postgresql';
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { compare, hash } from 'bcrypt';
-import { v4 as uuidV4 } from 'uuid';
-import { ProfilePictureDto } from './dtos/profile-picture.dto';
-import { UserEntity } from './entities/user.entity';
-import { CommonService } from '@app/common';
-import { getUserQueryCursor, RatioEnum } from '@app/common/enums';
-import { SearchDto } from '@app/common/dtos';
-import { IPaginated } from '@app/common/interfaces';
-import { LocalMessageType } from '@app/common/entities/gql';
-import { UploaderService } from '@app/uploader';
 import { RpcException } from '@nestjs/microservices';
-import { RegisterDto } from './dtos/register.dto';
-import { ChangePasswordDto } from './dtos/change-password.dto';
-import { UpdatePasswordDto } from './dtos/update-password.dto';
-import { LoginDto } from './dtos/login.dto';
-import { UserPayloadDto } from './dtos/user-payload.dto';
+import { compare, hash } from 'bcrypt';
 import dayjs from 'dayjs';
+import { v4 as uuidV4 } from 'uuid';
+import { CommonService } from '../common';
+import { SearchDto } from '../common/dtos';
+import { LocalMessageType } from '../common/entities/gql';
+import { getUserQueryCursor, RatioEnum } from '../common/enums';
+import { IPaginated } from '../common/interfaces';
+import { UploaderService } from '../uploader';
+import { ChangePasswordDto } from './dtos/change-password.dto';
+import { LoginDto } from './dtos/login.dto';
+import { ProfilePictureDto } from './dtos/profile-picture.dto';
+import { RegisterDto } from './dtos/register.dto';
+import { UpdatePasswordDto } from './dtos/update-password.dto';
+import { UserPayloadDto } from './dtos/user-payload.dto';
+import { UserEntity } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {

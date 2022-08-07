@@ -1,7 +1,3 @@
-import { CurrentUser, Public } from '@app/common/decorators';
-import { SearchDto } from '@app/common/dtos';
-import { LocalMessageType } from '@app/common/entities/gql';
-import { IAccessUser, IPaginated } from '@app/common/interfaces';
 import {
   Args,
   Mutation,
@@ -11,7 +7,11 @@ import {
   Resolver,
   ResolveReference,
 } from '@nestjs/graphql';
-import { FilterRelationDto } from 'app/common/dtos/filter-relation.dto';
+import { CurrentUser, Public } from '../common/decorators';
+import { SearchDto } from '../common/dtos';
+import { FilterRelationDto } from '../common/dtos/filter-relation.dto';
+import { LocalMessageType } from '../common/entities/gql';
+import { IAccessUser, IPaginated, IReference } from '../common/interfaces';
 import { PaginatedInstitutionsType } from '../institutions/entities/gql/paginated-institutions.type';
 import { PaginatedProfilesType } from '../profiles/entities/gql/paginated-profiles.type';
 import { EmailDto } from './dtos/email.dto';
@@ -110,7 +110,7 @@ export class UsersResolver {
 
   // Resolved by the loaders
   @ResolveReference()
-  public resolveReference(_: unknown) {
+  public resolveReference(_: IReference) {
     return;
   }
 }

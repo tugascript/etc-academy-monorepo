@@ -1,7 +1,7 @@
+import { PASSWORD_REGEX } from 'src/common/constants';
 import { IsString, Length, Matches, MinLength } from 'class-validator';
 import { IApiId } from '../interfaces/api-id.interface';
 import { UserPayloadDto } from './user-payload.dto';
-import { PASSWORD_REGEX } from '@app/common/constants';
 
 export abstract class ChangePasswordDto
   extends UserPayloadDto

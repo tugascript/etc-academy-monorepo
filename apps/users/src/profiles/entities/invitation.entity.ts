@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
-import { Field, ObjectType } from '@nestjs/graphql';
 import { Entity, Enum, ManyToOne, Property, Unique } from '@mikro-orm/core';
-import { LocalBaseEntity } from '@app/common/entities';
-import { IInvitation } from '../interfaces/invitation.interface';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { IsEmail, IsEnum, IsString, Length } from 'class-validator';
+import { LocalBaseEntity } from '../../common/entities';
 import {
   ProfileRoleEnum,
   ProfileStatusEnum,
   RequestStatusEnum,
-} from '@app/common/enums';
+} from '../../common/enums';
 import { InstitutionEntity } from '../../institutions/entities/institution.entity';
 import { UserEntity } from '../../users/entities/user.entity';
+import { IInvitation } from '../interfaces/invitation.interface';
 
 @ObjectType('Invitation')
 @Entity({ tableName: 'invitations' })

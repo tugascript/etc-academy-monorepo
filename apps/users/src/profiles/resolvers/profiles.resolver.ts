@@ -1,3 +1,5 @@
+import { CurrentUser } from 'src/common/decorators';
+import { IAccessUser, IPaginated, IReference } from 'src/common/interfaces';
 import {
   Args,
   Mutation,
@@ -5,18 +7,16 @@ import {
   Resolver,
   ResolveReference,
 } from '@nestjs/graphql';
-import { ProfilesService } from '../profiles.service';
-import { ProfileEntity } from '../entities/profile.entity';
-import { CurrentUser } from '@app/common/decorators';
-import { IAccessUser, IPaginated } from '@app/common/interfaces';
-import { UpdateProfilePictureDto } from '../dtos/update-profile-picture.dto';
-import { UpdateProfileStatusDto } from '../dtos/update-profile-status.dto';
-import { UpdateProfileRoleDto } from '../dtos/update-profile-role.dto';
-import { ProfileDto } from '../dtos/profile.dto';
-import { ProfileSlugDto } from '../dtos/profile-slug.dto';
-import { ProfileRelationsDto } from '../dtos/profile-relations.dto';
-import { PaginatedProfilesType } from '../entities/gql/paginated-profiles.type';
 import { FilterProfilesDto } from '../dtos/filter-profiles.dto';
+import { ProfileRelationsDto } from '../dtos/profile-relations.dto';
+import { ProfileSlugDto } from '../dtos/profile-slug.dto';
+import { ProfileDto } from '../dtos/profile.dto';
+import { UpdateProfilePictureDto } from '../dtos/update-profile-picture.dto';
+import { UpdateProfileRoleDto } from '../dtos/update-profile-role.dto';
+import { UpdateProfileStatusDto } from '../dtos/update-profile-status.dto';
+import { PaginatedProfilesType } from '../entities/gql/paginated-profiles.type';
+import { ProfileEntity } from '../entities/profile.entity';
+import { ProfilesService } from '../profiles.service';
 
 @Resolver(() => ProfileEntity)
 export class ProfilesResolver {
@@ -94,7 +94,7 @@ export class ProfilesResolver {
   }
 
   @ResolveReference()
-  public resolveReference(_: unknown) {
+  public resolveReference(_: IReference) {
     return;
   }
 }

@@ -1,7 +1,7 @@
 import { ArgsType, Field } from '@nestjs/graphql';
-import { InstitutionDto } from './institution.dto';
 import { IsString, Length, Matches } from 'class-validator';
-import { NAME_REGEX } from '@app/common/constants';
+import { NAME_REGEX } from '../../common/constants';
+import { InstitutionDto } from './institution.dto';
 
 @ArgsType()
 export abstract class UpdateInstitutionNameDto extends InstitutionDto {

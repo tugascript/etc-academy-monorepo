@@ -1,7 +1,7 @@
+import { ProfileRoleEnum } from 'src/common/enums';
 import { ArgsType, Field } from '@nestjs/graphql';
-import { ProfileDto } from './profile.dto';
-import { ProfileRoleEnum } from '@app/common/enums';
 import { IsEnum } from 'class-validator';
+import { ProfileDto } from './profile.dto';
 
 @ArgsType()
 export abstract class UpdateProfileRoleDto extends ProfileDto {

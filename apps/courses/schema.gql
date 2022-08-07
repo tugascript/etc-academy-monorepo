@@ -148,6 +148,7 @@ type Lesson {
   time: Timestamp!
   course: Course!
   manager: CourseProfile!
+  resources: [LessonResource!]!
 }
 
 enum LessonType {

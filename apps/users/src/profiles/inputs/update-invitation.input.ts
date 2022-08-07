@@ -1,6 +1,6 @@
+import { RequestStatusEnum } from 'src/common/enums';
 import { Field, InputType, Int } from '@nestjs/graphql';
 import { IsEnum, IsIn, IsInt, IsNumber } from 'class-validator';
-import { RequestStatusEnum } from '@app/common/enums';
 
 @InputType('UpdateInvitationInput')
 export abstract class UpdateInvitationInput {

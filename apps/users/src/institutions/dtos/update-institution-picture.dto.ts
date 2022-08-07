@@ -1,9 +1,9 @@
-import { InstitutionDto } from './institution.dto';
 import { ArgsType, Field } from '@nestjs/graphql';
-import { ValidatePromise } from 'class-validator';
 import { Type } from 'class-transformer';
-import { FileUploadDto } from '@app/uploader/dtos';
-import GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
+import { ValidatePromise } from 'class-validator';
+import { GraphQLUpload } from 'graphql-upload';
+import { FileUploadDto } from '../../uploader/dtos';
+import { InstitutionDto } from './institution.dto';
 
 @ArgsType()
 export abstract class UpdateInstitutionPictureDto extends InstitutionDto {

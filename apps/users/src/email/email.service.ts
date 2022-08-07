@@ -1,8 +1,8 @@
-import { CommonService } from '@app/common';
-import { ProfileRoleEnum } from '@app/common/enums';
 import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { CommonService } from 'src/common';
+import { ProfileRoleEnum } from 'src/common/enums';
 import { IProfile } from '../profiles/interfaces/profile.interface';
 import { IUser } from '../users/interfaces/user.interface';
 

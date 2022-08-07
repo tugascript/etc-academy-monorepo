@@ -28,7 +28,7 @@ import { IChange } from './interfaces/change.interface';
 import { IEdge, IPaginated } from './interfaces/paginated.interface';
 import { verifyToken } from './utils';
 
-const publicKeyPath = join(__dirname, '..', '..', '..', 'jwt.key.pub');
+const publicKeyPath = join(__dirname, '..', '..', 'jwt.key.pub');
 const publicKey = readFileSync(publicKeyPath, 'utf8');
 
 @Injectable()

@@ -43,6 +43,7 @@ export class ProfileEntity extends LocalBaseEntity implements IProfile {
   public status: ProfileStatusEnum;
 
   @Field(() => String, { nullable: true })
+  @Property({ columnType: 'varchar(250)', unique: true })
   @IsString()
   @IsUrl()
   @MaxLength(250)
